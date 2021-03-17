@@ -11,4 +11,4 @@ row for all the layers to account for the spacebar taking up two physical
 slots, but only one element in the layer array.
 
 I have these files symlinked into a local fork of the QMK Firmware, which
-you may find be be a useful way to do it as well.
+you may find useful as well.
