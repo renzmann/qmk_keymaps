@@ -2,7 +2,7 @@
 
 I use [QMK Firmware](https://github.com/qmk/qmk_firmware) for my
 [planck](https://olkb.com/collections/planck) keyboard. Right now I just
-have the one keyboard, and so the `keymap.c` and `keymap.c` are for
+have the one keyboard, and so the `keymap.c` and `keymap.h` are for
 a [planck EZ from Ergodox](https://ergodox-ez.com/pages/planck). The
 source code is GPL, so you're free to use and modify it, if you wish. You
 should be aware, however, that I use the Rev6 configuration, but on an EZ
