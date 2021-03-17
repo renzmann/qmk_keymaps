@@ -153,20 +153,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Numeric layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *  Application -- │ ⌘-` │ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │  =  │
-   *       window    ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *     switcher    │     │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │     │
+   *                 │  -  │ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │  =  │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *    Tap for [ -- │Shift│  -  │  =  │  `  │  \  │  :  │ndash│mdash│  ,  │  .  │  /  │Shift│ -- Tap for ]
+   *                 │     │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │     │
+   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+   *    Tap for [ -- │Shift│  -  │  =  │  `  │  \  │  :  │ndash│mdash│  ,  │  .  │PgUp │Shift│ -- Tap for ]
    *                 ├─────┼─────┼─────┼─────╆━━━━━╅─────┴─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │     │     │     ┃     ┃ Backspace │     │     │     │     │     │
+   *                 │     │     │     │     ┃     ┃ Backspace │     │     │Home │PgDn │ End │
    *                 └─────┴─────┴─────┴─────┺━━━━━┹───────────┴─────┴─────┴─────┴─────┴─────┘
    */
   [LOWER_LAYER] = LAYOUT_planck_grid_wrapper(
-    GUI_GRV, _________________LOWER_L1__________________, _________________LOWER_R1__________________, KC_EQL,
+    KC_MINS, _________________LOWER_L1__________________, _________________LOWER_R1__________________, KC_EQL,
     _______, _________________LOWER_L2__________________, _________________LOWER_R2__________________, _______,
-    KC_LSBR, _________________LOWER_L3__________________, _________________LOWER_R3__________________, KC_RSBR,
-    _______, _______, _______, _______, _______, KC_BSPC,          ADJUST,  _______, _______, _______, _______, _______
+    KC_LSBR, _________________LOWER_L3__________________, _________________LOWER_R3_________, KC_PGUP, KC_RSBR,
+    _______, _______, _______, _______, _______, KC_BSPC,          ADJUST,  _______, KC_HOME, KC_PGDN, KC_END,  _______
   ),
 
   /* Symbol layer
@@ -185,26 +185,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _________________RAISE_L2__________________, _________________RAISE_R2__________________, _______,
     KC_LSCB, _________________RAISE_L3__________________, _________________RAISE_R3__________________, KC_RSCB,
     _______, _______, _______, _______, ADJUST,  KC_DEL,           _______, _______, _______, _______, _______, _______
-  ),
-
-  /* Directional navigation layer
-   *
-   *          Large movements -----/```````````````````\   /```````````````````\----- Vim-style arrow keys
-   *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │     │     │     │     │     │     │     │     │     │     │     │
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╆━━━━━╅─────┤
-   *                 │     │     │Home │PgUp │PgDn │ End │  ←  │  ↓  │  ↑  │  →  ┃     ┃     │
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╄━━━━━╃─────┤
-   *                 │     │     │ ⌘ ← │ ⌘ ↑ │ ⌘ ↓ │ ⌘ → │ ⌥ ← │ ⌥ ↓ │ ⌥ ↑ │ ⌥ → │     │     │
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┴─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │     │     │     │     │           │     │     │     │     │     │
-   *                 └─────┴─────┴─────┴─────┴─────┴───────────┴─────┴─────┴─────┴─────┴─────┘
-   */
-  [NAV_LAYER] = LAYOUT_planck_grid_wrapper(
-    XXXXXXX, __________________NAV_L1___________________, __________________NAV_R1___________________, XXXXXXX,
-    _______, __________________NAV_L2___________________, __________________NAV_R2___________________, _______,
-    _______, __________________NAV_L3___________________, __________________NAV_R3___________________, _______,
-    _______, _______, _______, _______, XXXXXXX, KC_LSFT,          XXXXXXX, _______, _______, _______, _______, _______
   ),
 
   /* GUI (window management/mouse/media controls) layer
@@ -237,7 +217,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Keyboard settings layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *     Firmware -- │     │Reset│Make │     │     │     │     │     │ Ins │     │Vers │     │
+   *     Firmware -- │     │Reset│Make │     │     │     │     │     │ Ins │     │PrScn│     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *          RGB -- │Qwert│U Lnx│U OSX│Mode-│Mode+│Hue -│Hue +│Sat -│Sat +│     │Play1│Rec 1│ -- Record/play macro 1
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
@@ -248,7 +228,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                Swap GUI/Alt _/________/             \_____________\_ Backlight _/
    */
   [ADJUST_LAYER] = LAYOUT_planck_grid_wrapper(
-    XXXXXXX, RESET,   SEND_MAKE, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  XXXXXXX, SEND_VERSION,    XXXXXXX,
+    XXXXXXX, RESET,   SEND_MAKE, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  XXXXXXX, KC_PSCR,    XXXXXXX,
     QWERTY,  UC_M_LN, UC_M_OS,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY1, DYN_REC_START1,
     COLEMAK, XXXXXXX, XXXXXXX,   KC_CAPS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY2, DYN_REC_START2,
     XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  LOWER,   LIT_TOG,          RAISE,   LIT_TOG, LIT_DEC, LIT_INC,         DYN_REC_STOP, _______
@@ -263,9 +243,6 @@ void rgb_matrix_indicators_user(void) {
       break;
     case RAISE_LAYER:
       rgb_matrix_set_color(44, 0xFF, 0xFF, 0xFF); // RAISE
-      break;
-    case NAV_LAYER:
-      rgb_matrix_set_color(43, 0xFF, 0xFF, 0xFF); // NAV_BSP
       break;
     case GUI_LAYER:
       rgb_matrix_set_color(36, 0xFF, 0xFF, 0xFF); // GUI_L
@@ -285,5 +262,5 @@ void rgb_matrix_indicators_user(void) {
 
   // Disable middle LED between keys in grid layout.
   rgb_matrix_set_color(42, 0x00, 0x00, 0x00);
-#endif
 }
+#endif

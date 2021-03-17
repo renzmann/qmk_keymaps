@@ -36,7 +36,6 @@ enum user_layers {
   WPATH_LAYER,
   LOWER_LAYER,
   RAISE_LAYER,
-  NAV_LAYER,
   GUI_LAYER,
   ADJUST_LAYER
 };
@@ -144,7 +143,7 @@ enum user_keycodes {
 
 #define _________________LOWER_R1__________________ _________________FUNCTION_R________________
 #define _________________LOWER_R2__________________ _________________NUMBERS_R_________________
-#define _________________LOWER_R3__________________ KC_NDSH, KC_MDSH, KC_COMM, KC_DOT,  KC_SLSH
+#define _________________LOWER_R3_________          KC_NDSH, KC_MDSH, KC_COMM, KC_DOT
 
 #define _________________RAISE_L1__________________ KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15
 #define _________________RAISE_L2__________________ KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
@@ -168,7 +167,7 @@ enum user_keycodes {
 
 #define __________________GUI_R1___________________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
 #define __________________GUI_R2___________________ DF(WPATH_LAYER), DF(CAMEL_LAYER), DF(KEBAB_LAYER), DF(SNAKE_LAYER), DF(PATH_LAYER)
-#define __________________GUI_R3___________________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+#define __________________GUI_R3___________________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, _______
 
 #define __________VOLUME_________ KC_MUTE, KC_VOLD, KC_VOLU
 #define __________MEDIA__________ KC_MPRV, KC_MPLY, KC_MNXT
