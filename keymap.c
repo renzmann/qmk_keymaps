@@ -20,45 +20,69 @@
 
 
 #include QMK_KEYBOARD_H
-#include "keymap.h"
+
+enum user_layers {
+  QWERTY_LAYER,
+  CAMEL_LAYER,
+  KEBAB_LAYER,
+  SNAKE_LAYER,
+  PATH_LAYER,
+  WPATH_LAYER,
+  LOWER_LAYER,
+  RAISE_LAYER,
+  CORNER_LAYER,
+  ADJUST_LAYER
+};
+
+// "MY" is usually pretty safe to avoid conflicts
+enum user_keycodes {
+  MY_EQL = SAFE_RANGE,
+  MY_PLUS,
+  MY_MINS,
+  NEW_SAFE_RANGE
+};
+
+#define LOWER MO(LOWER_LAYER)
+#define RAISE MO(RAISE_LAYER)
+#define ADJUST MO(ADJUST_LAYER)
+#define CRNR_L LT(CORNER_LAYER, KC_LBRC)
+#define CRNR_R LT(CORNER_LAYER, KC_RBRC)
+#define KC_LSBR SFT_T(KC_LBRC)
+#define KC_RSBR SFT_T(KC_RBRC)
+#define KC_LSCB SFT_T(KC_LCBR)
+#define KC_RSCB SFT_T(KC_RCBR)
+#define HYPER_L C_S_T(KC_RBRC)
+#define HYPER_R C_S_T(KC_LBRC)
+#define CTL_ESC LCTL_T(KC_ESC)
+#define CTL_ENT RCTL_T(KC_ENT)
+#define NAV_SCLN LT(NAV_LAYER, KC_SCLN)
+#define CAPITAL OSM(MOD_LSFT)
+#define GUI_GRV LGUI(KC_GRV)
+#define STCH_EX DF(QWERTY_LAYER)
+#define KC_NDSH LALT(KC_MINS)
+#define KC_MDSH S(LALT(KC_MINS))
+#define __________________CNR_R1___________________ DF(WPATH_LAYER), DF(CAMEL_LAYER), DF(KEBAB_LAYER), DF(SNAKE_LAYER), DF(PATH_LAYER)
+#define __________________CNR_L3___________________ LCTL(KC_Z), LCTL(KC_X), LCTL(KC_INS), LSFT(KC_INS), XXXXXXX
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Base layer (Qwerty)
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
    *                 │  ⇥  │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  '  │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *  Tap for Esc -- │  ⌃  │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │; NAV│  ⌃  │ -- Tap for Enter
+   *  Tap for Esc -- │  ⌃  │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  ⌃  │ -- Tap for Enter
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *    Tap for ( -- │  ⇧  │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  ⇧  │ -- Tap for )
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┴─────┼─────┼─────┼─────┼─────┼─────┤
-   *    Tap for [ -- │ GUI │Hyper│  ⌘  │  ⌥  │  ↓  │   Space   │  ↑  │  ⌥  │  ⌘  │Hyper│ GUI │ -- Tap for
+   *    Tap for [ -- │CRNR │Hyper│  ⌘  │  ⌥  │  ↓  │   Space   │  ↑  │  ⌥  │  ⌘  │Hyper│CRNR │ -- Tap for
    *                 └─────┴─────┴─────┴─────┴─────┴───────────┴─────┴─────┴─────┴─────┴─────┘
    *                         /                                                     /
    *    Tap for ] [ --------'-----------------------------------------------------'
    */
   [QWERTY_LAYER] = LAYOUT_planck_grid_wrapper(
-    KC_TAB,  _________________QWERTY_L1_________________, _________________QWERTY_R1_________________, KC_QUOT,
-    CTL_ESC, _________________QWERTY_L2_________________, _________________QWERTY_R2_________________, CTL_ENT,
-    KC_LSPO, _________________QWERTY_L3_________________, _________________QWERTY_R3_________________, KC_RSPC,
-    GUI_L,   HYPER_L, KC_LGUI, KC_LALT, LOWER,    KC_SPC,           RAISE,  KC_RALT, KC_LGUI, HYPER_R, GUI_R,   _______
-  ),
-
-  /* Base layer (Colemak)
-   *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │  Q  │  W  │  F  │  P  │  G  │  J  │  L  │  U  │  Y  │  ;  │     │
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │  A  │  R  │  S  │  T  │  D  │  H  │  N  │  E  │  I  │O NAV│     │
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │  Z  │  X  │  C  │  V  │  B  │  K  │  M  │  ,  │  .  │  /  │     │
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┴─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │     │     │     │     │           │     │     │     │     │     │
-   *                 └─────┴─────┴─────┴─────┴─────┴───────────┴─────┴─────┴─────┴─────┴─────┘
-   */
-  [COLEMAK_LAYER] = LAYOUT_planck_grid_wrapper(
-    _______, _________________COLEMAK_L1________________, _________________COLEMAK_R1________________, _______,
-    _______, _________________COLEMAK_L2________________, _________________COLEMAK_R2________________, _______,
-    _______, _________________COLEMAK_L3________________, _________________COLEMAK_R3________________, _______,
-    _______, _______, _______, _______, _______, _______,          _______, _______, _______, _______, _______, _______
+    KC_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,    KC_QUOT,
+    CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,   KC_K,    KC_L,    KC_SCLN, CTL_ENT,
+    KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,
+    CRNR_L,  HYPER_L, KC_LGUI, KC_LALT, LOWER,   KC_SPC,           RAISE,  KC_RALT, KC_LGUI, HYPER_R, CRNR_R,  _______
   ),
 
   /* Stitching layer (camel)
@@ -153,7 +177,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Numeric layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │  -  │ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │  =  │
+   *        Macro -- │" - "│ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │" = "│ -- Macro
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
@@ -163,7 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 └─────┴─────┴─────┴─────┺━━━━━┹───────────┴─────┴─────┴─────┴─────┴─────┘
    */
   [LOWER_LAYER] = LAYOUT_planck_grid_wrapper(
-    KC_MINS, _________________LOWER_L1__________________, _________________LOWER_R1__________________, KC_EQL,
+    MY_MINS, _________________LOWER_L1__________________, _________________LOWER_R1__________________, MY_EQL,
     _______, _________________LOWER_L2__________________, _________________LOWER_R2__________________, _______,
     KC_LSBR, _________________LOWER_L3__________________, _________________LOWER_R3__________________, KC_RSBR,
     _______, _______, _______, _______, _______, KC_BSPC,          ADJUST,  _______, _______, _______, _______, _______
@@ -171,7 +195,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Symbol layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │ F11 │ F12 │ F13 │ F14 │ F15 │ F16 │ F17 │ F18 │ F19 │ F20 │  _  │
+   *        Macro -- │" + "│ F11 │ F12 │ F13 │ F14 │ F15 │ F16 │ F17 │ F18 │ F19 │ F20 │  _  │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │  !  │  @  │  #  │  $  │  %  │  ^  │  &  │  *  │  {  │  }  │     │ \
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤  |-- Mostly shifted version of lower layer
@@ -181,106 +205,64 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 └─────┴─────┴─────┴─────┴─────┴───────────┺━━━━━┹─────┴─────┴─────┴─────┘
    */
   [RAISE_LAYER] = LAYOUT_planck_grid_wrapper(
-    _______, _________________RAISE_L1__________________, _________________RAISE_R1__________________, KC_UNDS,
+    MY_PLUS, _________________RAISE_L1__________________, _________________RAISE_R1__________________, KC_UNDS,
     _______, _________________RAISE_L2__________________, _________________RAISE_R2__________________, _______,
     KC_LSCB, _________________RAISE_L3__________________, _________________RAISE_R3__________________, KC_RSCB,
     _______, _______, _______, _______, ADJUST,  KC_DEL,           _______, _______, _______, _______, _______, _______
   ),
 
-  /* Directional navigation layer
-   *
-   *          Large movements -----/```````````````````\   /```````````````````\----- Vim-style arrow keys
+  /* Corner layer - misc. utilities like arrows, media, stitching layers
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │     │     │     │     │     │     │     │     │     │     │     │
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╆━━━━━╅─────┤
-   *                 │     │     │Home │PgUp │PgDn │ End │  ←  │  ↓  │  ↑  │  →  ┃     ┃     │
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╄━━━━━╃─────┤
-   *                 │     │     │ ⌘ ← │ ⌘ ↑ │ ⌘ ↓ │ ⌘ → │ ⌥ ← │ ⌥ ↓ │ ⌥ ↑ │ ⌥ → │     │     │
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┴─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │     │     │     │     │   Shift   │     │     │     │     │     │
-   *                 └─────┴─────┴─────┴─────┴─────┴───────────┴─────┴─────┴─────┴─────┴─────┘
-   */
-  [NAV_LAYER] = LAYOUT_planck_grid_wrapper(
-    XXXXXXX, __________________NAV_L1___________________, __________________NAV_R1___________________, XXXXXXX,
-    _______, __________________NAV_L2___________________, __________________NAV_R2___________________, _______,
-    _______, __________________NAV_L3___________________, __________________NAV_R3___________________, _______,
-    _______, _______, _______, _______, XXXXXXX, KC_LSFT,          XXXXXXX, _______, _______, _______, _______, _______
-  ),
-
-  /* GUI (window management/mouse/media controls) layer
-   *
-   * It's called the "GUI" layer because Noah Frederick's original design had a
-   * lot of GUI navigation stuff on the right hand here. I didn't have a need
-   * for most of it, but the mouse movement is kinda nice. I needed the C/S-Ins
-   * for copy/pasting in an out of terminals. The stitching idea is brilliant,
-   * but I had some trouble getting it to work via user keycodes, so they get
-   * their own layers like written above.
-   *
-   *         Mouse keys -----/```````````````````\               /```````````````````\----- Stitching layers
-   *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │Ms B2│Ms Up│Ms B1│Ms WD│     │     │     │     │     │     │     │
+   *                 │     │Vol- │ Prv │Play │Next │Vol+ │WPath│Camel│Kebab│Snake│Path │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │Ms L │Ms Dn│Ms R │Ms WU│     │WPath│Camel│Kebab│Snake│Path │     │
+   *                 │     │     │Home │PgUp │PgDn │ End │  ←  │  ↓  │  ↑  │  →  │     │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │ C-z │ C-x │C-Ins│S-Ins│     │     │     │     │     │     │     │
    *                 ┢━━━━━╅─────┼─────┼─────┼─────┼─────┴─────┼─────┼─────┼─────┼─────╆━━━━━┪
-   *                 ┃     ┃Prev │Play │Next │Brig-│           │Brig+│Mute │Vol- │Vol+ ┃     ┃
+   *                 ┃     ┃     │     │     │     │           │     │     │     │     ┃     ┃
    *                 ┗━━━━━┹─────┴─────┴─────┴─────┴───────────┴─────┴─────┴─────┴─────┺━━━━━┛
-   *                         \___ Media ___/   \___ Screen/sleep __/   \___ Volume __/
    */
-  [GUI_LAYER] = LAYOUT_planck_grid_wrapper(
-    _______, __________________GUI_L1___________________, __________________GUI_R1___________________, _______,
-    _______, __________________GUI_L2___________________, __________________GUI_R2___________________, _______,
-    _______, __________________GUI_L3___________________, __________________GUI_R3___________________, _______,
-    _______, __________MEDIA__________, KC_BRID, _______,          KC_BRIU, __________VOLUME_________, _______, _______
+  [CORNER_LAYER] = LAYOUT_planck_grid_wrapper(
+    _______, KC_VOLD, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU, __________________CNR_R1___________________, _______,
+    _______, _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+    _______, __________________CNR_L3___________________, _______, _______, _______, _______, _______, _______,
+    _______, _______, _______, _______, _______, KC_LSFT,          _______, _______, _______, _______, _______, _______
   ),
 
   /* Keyboard settings layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *     Firmware -- │     │Reset│Make │     │     │     │     │     │ Ins │     │PrScn│     │
+   *                 │     │Reset│     │     │     │     │     │     │ Ins │     │PrScn│     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *          RGB -- │Qwert│U Lnx│U OSX│Mode-│Mode+│Hue -│Hue +│Sat -│Sat +│     │Play1│Rec 1│ -- Record/play macro 1
+   *                 │     │     │     │     │     │     │     │     │     │     │Play1│Rec 1│ -- Record/play macro 1
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *        Audio -- │Colem│     │     │Caps │     │     │     │     │     │     │Play2│Rec 2│ -- Record/play macro 2
+   *                 │     │     │     │Caps │     │     │     │     │     │     │Play2│Rec 2│ -- Record/play macro 2
    *                 ├─────┼─────┼─────┼─────╆━━━━━╅─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┤
    *                 │     │     │Swap │Norm ┃     ┃  Toggle   ┃     ┃Toggl│Brig-│Brig+│Stop │ -- Stop recording macro
    *                 └─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┘
    *                Swap GUI/Alt _/________/             \_____________\_ Backlight _/
    */
   [ADJUST_LAYER] = LAYOUT_planck_grid_wrapper(
-    XXXXXXX, RESET,   SEND_MAKE, XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  XXXXXXX, KC_PSCR,    XXXXXXX,
-    QWERTY,  UC_M_LN, UC_M_OS,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY1, DYN_REC_START1,
-    COLEMAK, XXXXXXX, XXXXXXX,   KC_CAPS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY2, DYN_REC_START2,
-    XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  LOWER,   LIT_TOG,          RAISE,   LIT_TOG, LIT_DEC, LIT_INC,         DYN_REC_STOP, _______
+    XXXXXXX, RESET,   XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  XXXXXXX, XXXXXXX,    XXXXXXX,
+    XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY1, DYN_REC_START1,
+    XXXXXXX, XXXXXXX, XXXXXXX,   KC_CAPS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY2, DYN_REC_START2,
+    XXXXXXX, XXXXXXX, AG_SWAP,   AG_NORM,  _______, LIT_TOG,          _______, XXXXXXX, XXXXXXX, XXXXXXX,         DYN_REC_STOP, _______
   )
 };
 
-#ifdef RGB_MATRIX_ENABLE
-void rgb_matrix_indicators_user(void) {
-  switch (biton32(layer_state)) {
-    case LOWER_LAYER:
-      rgb_matrix_set_color(40, 0xFF, 0xFF, 0xFF); // LOWER
-      break;
-    case RAISE_LAYER:
-      rgb_matrix_set_color(44, 0xFF, 0xFF, 0xFF); // RAISE
-      break;
-    case GUI_LAYER:
-      rgb_matrix_set_color(36, 0xFF, 0xFF, 0xFF); // GUI_L
-      rgb_matrix_set_color(48, 0xFF, 0xFF, 0xFF); // GUI_R
-      break;
-    case ADJUST_LAYER:
-      rgb_matrix_set_color(40, 0xFF, 0xFF, 0xFF); // LOWER
-      rgb_matrix_set_color(44, 0xFF, 0xFF, 0xFF); // RAISE
-      break;
-    case CAMEL_LAYER:
-    case KEBAB_LAYER:
-    case SNAKE_LAYER:
-      rgb_matrix_set_color(12, 0xFF, 0x30, 0x00); // STCH_EX
-      rgb_matrix_set_color(41, 0x88, 0xFF, 0x00); // "Space bar"
-      break;
-  }
 
-  // Disable middle LED between keys in grid layout.
-  rgb_matrix_set_color(42, 0x00, 0x00, 0x00);
-}
-#endif
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        switch(keycode) {
+            case MY_EQL:
+                SEND_STRING(" = ")
+                return false; break;
+            case MY_PLUS:
+                SEND_STRING(" + ")
+                return false; break;
+            case MY_MINS:
+                SEND_STRING(" - ")
+                return false; break;
+        }
+    }
+    return true;
+};
