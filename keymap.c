@@ -18,6 +18,8 @@
  * https://github.com/noahfrederick/qmk-keymaps
  */
 
+// TODO replace the bulky stitching layers with code functionality
+
 
 #include QMK_KEYBOARD_H
 
@@ -73,7 +75,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *    Tap for ( -- │  ⇧  │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  ⇧  │ -- Tap for )
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┴─────┼─────┼─────┼─────┼─────┼─────┤
-   *    Tap for [ -- │CRNR │Hyper│  ⌘  │  ⌥  │  ↓  │   Space   │  ↑  │  ⌥  │  ⌘  │Hyper│CRNR │ -- Tap for
+   *    Tap for [ -- │CORNR│Hyper│  ⌘  │  ⌥  │  ↓  │   Space   │  ↑  │  ⌥  │  ⌘  │Hyper│CORNR│ -- Tap for
    *                 └─────┴─────┴─────┴─────┴─────┴───────────┴─────┴─────┴─────┴─────┴─────┘
    *                         /                                                     /
    *    Tap for ] [ --------'-----------------------------------------------------'
@@ -242,7 +244,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                Swap GUI/Alt _/________/             \_____________\_ Backlight _/
    */
   [ADJUST_LAYER] = LAYOUT_planck_grid_wrapper(
-    XXXXXXX, RESET,   XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  XXXXXXX, XXXXXXX,    XXXXXXX,
+    XXXXXXX, RESET,   XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  XXXXXXX, KC_PSCR,         XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY1, DYN_REC_START1,
     XXXXXXX, XXXXXXX, XXXXXXX,   KC_CAPS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY2, DYN_REC_START2,
     XXXXXXX, XXXXXXX, AG_SWAP,   AG_NORM,  _______, LIT_TOG,          _______, XXXXXXX, XXXXXXX, XXXXXXX,         DYN_REC_STOP, _______
