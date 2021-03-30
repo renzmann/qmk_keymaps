@@ -23,27 +23,6 @@
 
 #include QMK_KEYBOARD_H
 
-enum user_layers {
-  QWERTY_LAYER,
-  CAMEL_LAYER,
-  KEBAB_LAYER,
-  SNAKE_LAYER,
-  PATH_LAYER,
-  WPATH_LAYER,
-  LOWER_LAYER,
-  RAISE_LAYER,
-  CORNER_LAYER,
-  ADJUST_LAYER
-};
-
-// "MY" is usually pretty safe to avoid conflicts
-enum user_keycodes {
-  MY_EQL = SAFE_RANGE,
-  MY_PLUS,
-  MY_MINS,
-  NEW_SAFE_RANGE
-};
-
 #define LOWER MO(LOWER_LAYER)
 #define RAISE MO(RAISE_LAYER)
 #define ADJUST MO(ADJUST_LAYER)
@@ -65,6 +44,29 @@ enum user_keycodes {
 #define KC_MDSH S(LALT(KC_MINS))
 #define __________________CNR_R1___________________ DF(WPATH_LAYER), DF(CAMEL_LAYER), DF(KEBAB_LAYER), DF(SNAKE_LAYER), DF(PATH_LAYER)
 #define __________________CNR_L3___________________ LCTL(KC_Z), LCTL(KC_X), LCTL(KC_INS), LSFT(KC_INS), XXXXXXX
+#define LAYOUT_planck_grid_wrapper(...) LAYOUT_planck_grid(__VA_ARGS__)
+
+enum user_layers {
+  QWERTY_LAYER,
+  CAMEL_LAYER,
+  KEBAB_LAYER,
+  SNAKE_LAYER,
+  PATH_LAYER,
+  WPATH_LAYER,
+  LOWER_LAYER,
+  RAISE_LAYER,
+  CORNER_LAYER,
+  ADJUST_LAYER
+};
+
+// "MY" is usually pretty safe to avoid conflicts
+enum user_keycodes {
+  MY_EQL = SAFE_RANGE,
+  MY_PLUS,
+  MY_MINS,
+  NEW_SAFE_RANGE
+};
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Base layer (Qwerty)
@@ -189,9 +191,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 └─────┴─────┴─────┴─────┺━━━━━┹───────────┴─────┴─────┴─────┴─────┴─────┘
    */
   [LOWER_LAYER] = LAYOUT_planck_grid_wrapper(
-    MY_MINS, _________________LOWER_L1__________________, _________________LOWER_R1__________________, MY_EQL,
-    _______, _________________LOWER_L2__________________, _________________LOWER_R2__________________, _______,
-    KC_LSBR, _________________LOWER_L3__________________, _________________LOWER_R3__________________, KC_RSBR,
+    MY_MINS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  MY_EQL,
+    _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
+    KC_LSBR, KC_MINS, KC_EQL,  KC_GRV,  KC_BSLS, KC_COLN, KC_NDSH, KC_MDSH, KC_COMM, KC_DOT,  KC_SLSH, KC_RSBR,
     _______, _______, _______, _______, _______, KC_BSPC,          ADJUST,  _______, _______, _______, _______, _______
   ),
 
@@ -207,9 +209,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 └─────┴─────┴─────┴─────┴─────┴───────────┺━━━━━┹─────┴─────┴─────┴─────┘
    */
   [RAISE_LAYER] = LAYOUT_planck_grid_wrapper(
-    MY_PLUS, _________________RAISE_L1__________________, _________________RAISE_R1__________________, KC_UNDS,
-    _______, _________________RAISE_L2__________________, _________________RAISE_R2__________________, _______,
-    KC_LSCB, _________________RAISE_L3__________________, _________________RAISE_R3__________________, KC_RSCB,
+    MY_PLUS, KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15 , KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20 , KC_UNDS,
+    _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LCBR, KC_RCBR, _______,
+    KC_LSCB, KC_UNDS, KC_PLUS, KC_TILD, KC_PIPE, KC_COLN, KC_NDSH, KC_MDSH, KC_COMM, KC_DOT,  KC_SLSH, KC_RSCB,
     _______, _______, _______, _______, ADJUST,  KC_DEL,           _______, _______, _______, _______, _______, _______
   ),
 
@@ -247,7 +249,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, RESET,   XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  XXXXXXX, KC_PSCR,         XXXXXXX,
     XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY1, DYN_REC_START1,
     XXXXXXX, XXXXXXX, XXXXXXX,   KC_CAPS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY2, DYN_REC_START2,
-    XXXXXXX, XXXXXXX, AG_SWAP,   AG_NORM,  _______, LIT_TOG,          _______, XXXXXXX, XXXXXXX, XXXXXXX,         DYN_REC_STOP, _______
+    XXXXXXX, XXXXXXX, AG_SWAP,   AG_NORM,  _______, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX,         DYN_REC_STOP, _______
   )
 };
 
@@ -256,13 +258,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
         switch(keycode) {
             case MY_EQL:
-                SEND_STRING(" = ")
+                SEND_STRING(" = ");
                 return false; break;
             case MY_PLUS:
-                SEND_STRING(" + ")
+                SEND_STRING(" + ");
                 return false; break;
             case MY_MINS:
-                SEND_STRING(" - ")
+                SEND_STRING(" - ");
                 return false; break;
         }
     }
