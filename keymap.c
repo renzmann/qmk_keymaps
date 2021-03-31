@@ -46,6 +46,7 @@
 #define __________________CNR_L3___________________ LCTL(KC_Z), LCTL(KC_X), LCTL(KC_INS), LSFT(KC_INS), XXXXXXX
 #define LAYOUT_planck_grid_wrapper(...) LAYOUT_planck_grid(__VA_ARGS__)
 
+
 enum user_layers {
   QWERTY_LAYER,
   CAMEL_LAYER,
@@ -64,6 +65,15 @@ enum user_keycodes {
   MY_EQL = SAFE_RANGE,
   MY_PLUS,
   MY_MINS,
+  MAC_A,
+  MAC_S,
+  MAC_D,
+  MAC_F,
+  MAC_G,
+  MAC_H,
+  MAC_J,
+  MAC_K,
+  MAC_L,
   NEW_SAFE_RANGE
 };
 
@@ -247,7 +257,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    */
   [ADJUST_LAYER] = LAYOUT_planck_grid_wrapper(
     XXXXXXX, RESET,   XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  XXXXXXX, KC_PSCR,         XXXXXXX,
-    XXXXXXX, XXXXXXX, XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY1, DYN_REC_START1,
+    XXXXXXX, MAC_A,   MAC_S,     MAC_D,    MAC_F,   MAC_G,   MAC_H,   MAC_J,   MAC_K,   MAC_L,   DYN_MACRO_PLAY1, DYN_REC_START1,
     XXXXXXX, XXXXXXX, XXXXXXX,   KC_CAPS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY2, DYN_REC_START2,
     XXXXXXX, XXXXXXX, AG_SWAP,   AG_NORM,  _______, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX,         DYN_REC_STOP, _______
   )
@@ -265,6 +275,33 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                 return false; break;
             case MY_MINS:
                 SEND_STRING(" - ");
+                return false; break;
+            case MAC_A:
+                SEND_STRING(getenv("QMK_MAC_A"));
+                return false; break;
+            case MAC_S:
+                SEND_STRING(getenv("QMK_MAC_S"));
+                return false; break;
+            case MAC_D:
+                SEND_STRING(getenv("QMK_MAC_D"));
+                return false; break;
+            case MAC_F:
+                SEND_STRING(getenv("QMK_MAC_F"));
+                return false; break;
+            case MAC_G:
+                SEND_STRING(getenv("QMK_MAC_G"));
+                return false; break;
+            case MAC_H:
+                SEND_STRING(getenv("QMK_MAC_H"));
+                return false; break;
+            case MAC_J:
+                SEND_STRING(getenv("QMK_MAC_J"));
+                return false; break;
+            case MAC_K:
+                SEND_STRING(getenv("QMK_MAC_K"));
+                return false; break;
+            case MAC_L:
+                SEND_STRING(getenv("QMK_MAC_L"));
                 return false; break;
         }
     }
