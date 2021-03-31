@@ -22,6 +22,8 @@
 
 
 #include QMK_KEYBOARD_H
+#include <stdio.h>
+#include <stdlib.h>
 
 #define LOWER MO(LOWER_LAYER)
 #define RAISE MO(RAISE_LAYER)
@@ -265,43 +267,55 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    // TODO we'll have to do this with another configuration method. Doesn't
+    // look like environment variables get inherited when compiling
+    /* const char* mac_a = getenv("QMK_MAC_A"); */
+    /* const char* mac_s = getenv("QMK_MAC_S"); */
+    /* const char* mac_d = getenv("QMK_MAC_D"); */
+    /* const char* mac_f = getenv("QMK_MAC_F"); */
+    /* const char* mac_g = getenv("QMK_MAC_G"); */
+    /* const char* mac_h = getenv("QMK_MAC_H"); */
+    /* const char* mac_j = getenv("QMK_MAC_J"); */
+    /* const char* mac_k = getenv("QMK_MAC_K"); */
+    /* const char* mac_l = getenv("QMK_MAC_L"); */
+
     if (record->event.pressed) {
         switch(keycode) {
-            case MY_EQL:
+            case MY_EQL: ;
                 SEND_STRING(" = ");
                 return false; break;
-            case MY_PLUS:
+            case MY_PLUS: ;
                 SEND_STRING(" + ");
                 return false; break;
-            case MY_MINS:
+            case MY_MINS: ;
                 SEND_STRING(" - ");
                 return false; break;
-            case MAC_A:
-                SEND_STRING(getenv("QMK_MAC_A"));
+            case MAC_A: ;
+                SEND_STRING(mac_a);
                 return false; break;
-            case MAC_S:
-                SEND_STRING(getenv("QMK_MAC_S"));
+            case MAC_S: ;
+                SEND_STRING(mac_s);
                 return false; break;
-            case MAC_D:
-                SEND_STRING(getenv("QMK_MAC_D"));
+            case MAC_D: ;
+                SEND_STRING(mac_d);
                 return false; break;
-            case MAC_F:
-                SEND_STRING(getenv("QMK_MAC_F"));
+            case MAC_F: ;
+                SEND_STRING(mac_f);
                 return false; break;
-            case MAC_G:
-                SEND_STRING(getenv("QMK_MAC_G"));
+            case MAC_G: ;
+                SEND_STRING(mac_g);
                 return false; break;
-            case MAC_H:
-                SEND_STRING(getenv("QMK_MAC_H"));
+            case MAC_H: ;
+                SEND_STRING(mac_h);
                 return false; break;
-            case MAC_J:
-                SEND_STRING(getenv("QMK_MAC_J"));
+            case MAC_J: ;
+                SEND_STRING(mac_j);
                 return false; break;
-            case MAC_K:
-                SEND_STRING(getenv("QMK_MAC_K"));
+            case MAC_K: ;
+                SEND_STRING(mac_k);
                 return false; break;
-            case MAC_L:
-                SEND_STRING(getenv("QMK_MAC_L"));
+            case MAC_L: ;
+                SEND_STRING(mac_l);
                 return false; break;
         }
     }
