@@ -24,29 +24,8 @@
 #include QMK_KEYBOARD_H
 #include <stdio.h>
 #include <stdlib.h>
-
-#define LOWER MO(LOWER_LAYER)
-#define RAISE MO(RAISE_LAYER)
-#define ADJUST MO(ADJUST_LAYER)
-#define CRNR_L LT(CORNER_LAYER, KC_LBRC)
-#define CRNR_R LT(CORNER_LAYER, KC_RBRC)
-#define KC_LSBR SFT_T(KC_LBRC)
-#define KC_RSBR SFT_T(KC_RBRC)
-#define KC_LSCB SFT_T(KC_LCBR)
-#define KC_RSCB SFT_T(KC_RCBR)
-#define HYPER_L C_S_T(KC_RBRC)
-#define HYPER_R C_S_T(KC_LBRC)
-#define CTL_ESC LCTL_T(KC_ESC)
-#define CTL_ENT RCTL_T(KC_ENT)
-#define NAV_SCLN LT(NAV_LAYER, KC_SCLN)
-#define CAPITAL OSM(MOD_LSFT)
-#define GUI_GRV LGUI(KC_GRV)
-#define STCH_EX DF(QWERTY_LAYER)
-#define KC_NDSH LALT(KC_MINS)
-#define KC_MDSH S(LALT(KC_MINS))
-#define __________________CNR_R1___________________ DF(WPATH_LAYER), DF(CAMEL_LAYER), DF(KEBAB_LAYER), DF(SNAKE_LAYER), DF(PATH_LAYER)
-#define __________________CNR_L3___________________ LCTL(KC_Z), LCTL(KC_X), LCTL(KC_INS), LSFT(KC_INS), XXXXXXX
-#define LAYOUT_planck_grid_wrapper(...) LAYOUT_planck_grid(__VA_ARGS__)
+#include "mymacro.h"
+#include "mykeys.h"
 
 
 enum user_layers {
@@ -67,15 +46,15 @@ enum user_keycodes {
   MY_EQL = SAFE_RANGE,
   MY_PLUS,
   MY_MINS,
-  MAC_A,
-  MAC_S,
-  MAC_D,
-  MAC_F,
-  MAC_G,
-  MAC_H,
-  MAC_J,
-  MAC_K,
-  MAC_L,
+  KC_MAC_A,
+  KC_MAC_S,
+  KC_MAC_D,
+  KC_MAC_F,
+  KC_MAC_G,
+  KC_MAC_H,
+  KC_MAC_J,
+  KC_MAC_K,
+  KC_MAC_L,
   NEW_SAFE_RANGE
 };
 
@@ -258,27 +237,19 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                Swap GUI/Alt _/________/             \_____________\_ Backlight _/
    */
   [ADJUST_LAYER] = LAYOUT_planck_grid_wrapper(
-    XXXXXXX, RESET,   XXXXXXX,   XXXXXXX,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, KC_INS,  XXXXXXX, KC_PSCR,         XXXXXXX,
-    XXXXXXX, MAC_A,   MAC_S,     MAC_D,    MAC_F,   MAC_G,   MAC_H,   MAC_J,   MAC_K,   MAC_L,   DYN_MACRO_PLAY1, DYN_REC_START1,
-    XXXXXXX, XXXXXXX, XXXXXXX,   KC_CAPS,  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, DYN_MACRO_PLAY2, DYN_REC_START2,
-    XXXXXXX, XXXXXXX, AG_SWAP,   AG_NORM,  _______, _______,          _______, XXXXXXX, XXXXXXX, XXXXXXX,         DYN_REC_STOP, _______
+    XXXXXXX, RESET,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_INS,   XXXXXXX,  KC_PSCR, XXXXXXX,
+    XXXXXXX, KC_MAC_A, KC_MAC_S, KC_MAC_D, KC_MAC_F, KC_MAC_G, KC_MAC_H, KC_MAC_J, KC_MAC_K, KC_MAC_L, DM_PLY1, DM_REC1,
+    XXXXXXX, XXXXXXX,  XXXXXXX,  KC_CAPS,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DM_PLY2, DM_REC2,
+    XXXXXXX, XXXXXXX,  AG_SWAP,  AG_NORM,  _______,  _______,           _______,   XXXXXXX,  XXXXXXX,  XXXXXXX, DM_RSTP, _______
   )
 };
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-    // TODO we'll have to do this with another configuration method. Doesn't
-    // look like environment variables get inherited when compiling
-    /* const char* mac_a = getenv("QMK_MAC_A"); */
-    /* const char* mac_s = getenv("QMK_MAC_S"); */
-    /* const char* mac_d = getenv("QMK_MAC_D"); */
-    /* const char* mac_f = getenv("QMK_MAC_F"); */
-    /* const char* mac_g = getenv("QMK_MAC_G"); */
-    /* const char* mac_h = getenv("QMK_MAC_H"); */
-    /* const char* mac_j = getenv("QMK_MAC_J"); */
-    /* const char* mac_k = getenv("QMK_MAC_K"); */
-    /* const char* mac_l = getenv("QMK_MAC_L"); */
 
+    /* Macros defined in mymacro.h. This includes things like passwords, so
+     * I don't check this one into source control
+     */
     if (record->event.pressed) {
         switch(keycode) {
             case MY_EQL: ;
@@ -290,32 +261,32 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case MY_MINS: ;
                 SEND_STRING(" - ");
                 return false; break;
-            case MAC_A: ;
-                SEND_STRING(mac_a);
+            case KC_MAC_A: ;
+                SEND_STRING(MAC_A);
                 return false; break;
-            case MAC_S: ;
-                SEND_STRING(mac_s);
+            case KC_MAC_S: ;
+                SEND_STRING(MAC_S);
                 return false; break;
-            case MAC_D: ;
-                SEND_STRING(mac_d);
+            case KC_MAC_D: ;
+                SEND_STRING(MAC_D);
                 return false; break;
-            case MAC_F: ;
-                SEND_STRING(mac_f);
+            case KC_MAC_F: ;
+                SEND_STRING(MAC_F);
                 return false; break;
-            case MAC_G: ;
-                SEND_STRING(mac_g);
+            case KC_MAC_G: ;
+                SEND_STRING(MAC_G);
                 return false; break;
-            case MAC_H: ;
-                SEND_STRING(mac_h);
+            case KC_MAC_H: ;
+                SEND_STRING(MAC_H);
                 return false; break;
-            case MAC_J: ;
-                SEND_STRING(mac_j);
+            case KC_MAC_J: ;
+                SEND_STRING(MAC_J);
                 return false; break;
-            case MAC_K: ;
-                SEND_STRING(mac_k);
+            case KC_MAC_K: ;
+                SEND_STRING(MAC_K);
                 return false; break;
-            case MAC_L: ;
-                SEND_STRING(mac_l);
+            case KC_MAC_L: ;
+                SEND_STRING(MAC_L);
                 return false; break;
         }
     }
