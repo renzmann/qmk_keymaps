@@ -12,6 +12,8 @@
 #define KC_RSCB SFT_T(KC_RCBR)
 #define HYPER_L C_S_T(KC_RBRC)
 #define HYPER_R C_S_T(KC_LBRC)
+#define LSA_TAB LSA_T(KC_TAB)
+#define LSA_QT  LSA_T(KC_QUOT)
 #define CTL_ESC LCTL_T(KC_ESC)
 #define CTL_ENT RCTL_T(KC_ENT)
 #define NAV_SCLN LT(NAV_LAYER, KC_SCLN)
