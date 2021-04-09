@@ -5,6 +5,12 @@
 #define CRNR_L LT(CORNER_LAYER, KC_LBRC)
 #define CRNR_R LT(CORNER_LAYER, KC_RBRC)
 
+// Modified
+#define M_LEFT G(KC_LEFT)
+#define M_UP   G(KC_UP)
+#define M_DOWN G(KC_DOWN)
+#define M_RGHT G(KC_RGHT)
+
 // Tapdance keys
 #define KC_LSBR SFT_T(KC_LBRC)
 #define KC_RSBR SFT_T(KC_RBRC)
