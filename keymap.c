@@ -207,9 +207,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   /* Corner layer - misc. utilities like arrows, media, stitching layers
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │Vol- │ Prv │Play │Next │Vol+ │WPath│Camel│Kebab│Snake│Path │     │
+   *                 │     │Vol- │ Prv │Play │Next │Vol+ │Home │PgDn │PgUp │ End │     │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │     │Home │PgUp │PgDn │ End │  ←  │  ↓  │  ↑  │  →  │     │     │
+   *                 │     │WPath│Camel│Kebab│Snake│Path │  ←  │  ↓  │  ↑  │  →  │     │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │ C-z │ C-x │C-Ins│S-Ins│     │ ⌥←  │ ⌥↓  │ ⌥↑  │ ⌥→  │     │     │
    *                 ┢━━━━━╅─────┼─────┼─────┼─────┼─────┴─────┼─────┼─────┼─────┼─────╆━━━━━┪
@@ -217,8 +217,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 ┗━━━━━┹─────┴─────┴─────┴─────┴───────────┴─────┴─────┴─────┴─────┺━━━━━┛
    */
   [CORNER_LAYER] = LAYOUT_planck_grid_wrapper(
-    _______, KC_VOLD, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU, __________________CNR_R1___________________, _______,
-    _______, _______, KC_HOME, KC_PGUP, KC_PGDN, KC_END,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
+    _______, KC_VOLD, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______,
+    _______, __________________CNR_R1___________________, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
     _______, __________________CNR_L3___________________, M_LEFT,  M_DOWN,  M_UP,    M_RGHT,  _______, _______,
     _______, _______, _______, _______, _______, KC_LSFT,          _______, _______, _______, _______, _______, _______
   ),
