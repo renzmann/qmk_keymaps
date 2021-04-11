@@ -76,7 +76,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LSA_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,   LSA_QT,
     CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,   KC_K,    KC_L,    KC_SCLN, CTL_ENT,
     KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,
-    CRNR_L,  HYPER_L, KC_LGUI, KC_LALT, LOWER,   KC_SPC,           RAISE,  KC_RALT, KC_LGUI, HYPER_R, CRNR_R,  _______
+    CRNR_L,  HYPER_L, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,  KC_RALT, KC_LGUI, HYPER_R, CRNR_R
   ),
 
   /* Stitching layer (camel)
@@ -94,7 +94,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     STCH_EX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, CAPITAL,          _______, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, CAPITAL, CAPITAL, _______, _______, _______, _______, _______
   ),
 
   /* Stitching layer (kebab)
@@ -112,7 +112,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     STCH_EX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, KC_MINS,          _______, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, KC_MINS, KC_MINS, _______, _______, _______, _______, _______
   ),
 
   /* Stitching layer (snake)
@@ -130,7 +130,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     STCH_EX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, KC_UNDS,          _______, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, KC_UNDS, KC_UNDS, _______, _______, _______, _______, _______
   ),
 
   /* Stitching layer (path)
@@ -148,7 +148,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     STCH_EX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, KC_SLSH,          _______, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, KC_SLSH, KC_SLSH, _______, _______, _______, _______, _______
   ),
 
   /* Stitching layer (Windows path)
@@ -166,7 +166,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     STCH_EX, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
     _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-    _______, _______, _______, _______, _______, KC_BSLS,          _______, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, KC_BSLS, KC_BSLS, _______, _______, _______, _______, _______
   ),
 
   /* Numeric layer
@@ -184,7 +184,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MY_MINS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  MY_EQL,
     _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
     KC_LSBR, KC_MINS, KC_EQL,  KC_GRV,  KC_BSLS, KC_COLN, KC_NDSH, KC_MDSH, KC_COMM, KC_DOT,  KC_SLSH, KC_RSBR,
-    _______, _______, _______, _______, _______, KC_BSPC,          ADJUST,  _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, KC_BSPC, KC_BSPC, ADJUST,  _______, _______, _______, _______
   ),
 
   /* Symbol layer
@@ -202,7 +202,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MY_PLUS, KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15 , KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20 , KC_UNDS,
     _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LCBR, KC_RCBR, _______,
     KC_LSCB, KC_UNDS, KC_PLUS, KC_TILD, KC_PIPE, KC_COLN, KC_NDSH, KC_MDSH, KC_COMM, KC_DOT,  KC_SLSH, KC_RSCB,
-    _______, _______, _______, _______, ADJUST,  KC_DEL,           _______, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, ADJUST,  KC_DEL, KC_DEL, _______, _______, _______, _______, _______
   ),
 
   /* Corner layer - misc. utilities like arrows, media, stitching layers
@@ -220,7 +220,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, KC_VOLD, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______,
     _______, __________________CNR_R1___________________, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
     _______, __________________CNR_L3___________________, M_LEFT,  M_DOWN,  M_UP,    M_RGHT,  _______, _______,
-    _______, _______, _______, _______, _______, KC_LSFT,          _______, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, _______, KC_LSFT, KC_LSFT, _______, _______, _______, _______, _______
   ),
 
   /* Keyboard settings layer
@@ -239,7 +239,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX, RESET,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_INS,   XXXXXXX,  KC_PSCR, XXXXXXX,
     XXXXXXX, KC_MAC_A, KC_MAC_S, KC_MAC_D, KC_MAC_F, KC_MAC_G, KC_MAC_H, KC_MAC_J, KC_MAC_K, KC_MAC_L, DM_PLY1, DM_REC1,
     XXXXXXX, XXXXXXX,  XXXXXXX,  KC_CAPS,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DM_PLY2, DM_REC2,
-    XXXXXXX, XXXXXXX,  AG_SWAP,  AG_NORM,  _______,  _______,           _______,   XXXXXXX,  XXXXXXX,  XXXXXXX, DM_RSTP, _______
+    XXXXXXX, XXXXXXX,  AG_SWAP,  AG_NORM,  _______,  _______, _______, _______,   XXXXXXX,  XXXXXXX,  XXXXXXX, DM_RSTP
   )
 };
 
