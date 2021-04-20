@@ -20,41 +20,8 @@
 
 
 #include QMK_KEYBOARD_H
-#include <stdio.h>
-#include <stdlib.h>
 #include "mymacro.h"
 #include "mykeys.h"
-
-
-enum user_layers {
-  QWERTY_LAYER,
-  CAMEL_LAYER,
-  KEBAB_LAYER,
-  SNAKE_LAYER,
-  PATH_LAYER,
-  WPATH_LAYER,
-  LOWER_LAYER,
-  RAISE_LAYER,
-  CORNER_LAYER,
-  ADJUST_LAYER
-};
-
-// "MY" is usually pretty safe to avoid conflicts
-enum user_keycodes {
-  MY_EQL = SAFE_RANGE,
-  MY_PLUS,
-  MY_MINS,
-  KC_MAC_A,
-  KC_MAC_S,
-  KC_MAC_D,
-  KC_MAC_F,
-  KC_MAC_G,
-  KC_MAC_H,
-  KC_MAC_J,
-  KC_MAC_K,
-  KC_MAC_L,
-  NEW_SAFE_RANGE
-};
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -66,17 +33,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *  Tap for Esc -- │  ⌃  │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  ⌃  │ -- Tap for Enter
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *    Tap for ( -- │  ⇧  │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  ⇧  │ -- Tap for )
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┴─────┼─────┼─────┼─────┼─────┼─────┤
-   *    Tap for [ -- │CORNR│Hyper│  ⌘  │  ⌥  │  ↓  │   Space   │  ↑  │  ⌥  │  ⌘  │Hyper│CORNR│ -- Tap for
-   *                 └─────┴─────┴─────┴─────┴─────┴───────────┴─────┴─────┴─────┴─────┴─────┘
+   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+   *    Tap for [ -- │CORNR│Hyper│  ⌥  │  ⌘  │  ↓  │Space│ NAV │  ↑  │  ⌘  │  ⌥  │Hyper│CORNR│ -- Tap for
+   *                 └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
    *                         /                                                     /
    *    Tap for ] [ --------'-----------------------------------------------------'
    */
   [QWERTY_LAYER] = LAYOUT_planck_grid_wrapper(
-    LSA_TAB,  KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,   LSA_QT,
+    LSA_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,    LSA_QT,
     CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,   KC_K,    KC_L,    KC_SCLN, CTL_ENT,
     KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,
-    CRNR_L,  HYPER_L, KC_LGUI, KC_LALT, LOWER,   KC_SPC,  KC_SPC,  RAISE,  KC_RALT, KC_LGUI, HYPER_R, CRNR_R
+    CRNR_L,  HYPER_L, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  NAV_SPC, RAISE,  KC_RGUI, KC_RALT, HYPER_R, CRNR_R
   ),
 
   /* Stitching layer (camel)
@@ -184,7 +151,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MY_MINS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  MY_EQL,
     _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
     KC_LSBR, KC_MINS, KC_EQL,  KC_GRV,  KC_BSLS, KC_COLN, KC_NDSH, KC_MDSH, KC_COMM, KC_DOT,  KC_SLSH, KC_RSBR,
-    _______, _______, _______, _______, _______, KC_BSPC, KC_BSPC, ADJUST,  _______, _______, _______, _______
+    _______, _______, _______, _______, _______, KC_SPC,  KC_BSPC, ADJUST,  _______, _______, _______, _______
   ),
 
   /* Symbol layer
@@ -205,22 +172,45 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, ADJUST,  KC_DEL, KC_DEL, _______, _______, _______, _______, _______
   ),
 
-  /* Corner layer - misc. utilities like arrows, media, stitching layers
+  /* Directional navigation layer
+   *
+   *          Large movements -----/```````````````````\   /```````````````````\----- Vim-style arrow keys
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │Vol- │ Prv │Play │Next │Vol+ │Home │PgDn │PgUp │ End │     │     │
+   *                 │     │     │     │     │     │     │     │     │     │     │     │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │WPath│Camel│Kebab│Snake│Path │  ←  │  ↓  │  ↑  │  →  │     │     │
+   *                 │     │     │Home │PgUp │PgDn │ End │  ←  │  ↓  │  ↑  │  →  │     │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │ C-z │ C-x │C-Ins│S-Ins│     │ ⌥←  │ ⌥↓  │ ⌥↑  │ ⌥→  │     │     │
-   *                 ┢━━━━━╅─────┼─────┼─────┼─────┼─────┴─────┼─────┼─────┼─────┼─────╆━━━━━┪
-   *                 ┃     ┃     │     │     │     │           │     │     │     │     ┃     ┃
-   *                 ┗━━━━━┹─────┴─────┴─────┴─────┴───────────┴─────┴─────┴─────┴─────┺━━━━━┛
+   *                 │     │     │ ⌘ ← │ ⌘ ↑ │ ⌘ ↓ │ ⌘ → │ ⌥ ← │ ⌥ ↓ │ ⌥ ↑ │ ⌥ → │     │     │
+   *                 ├─────┼─────┼─────┼─────┼─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┼─────┤
+   *                 │     │     │     │     │     │     ┃     ┃     │     │     │     │     │
+   *                 └─────┴─────┴─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┴─────┘
+   */
+  [NAV_LAYER] = LAYOUT_planck_grid_wrapper(
+    XXXXXXX, __________________NAV_L1___________________, __________________NAV_R1___________________, XXXXXXX,
+    _______, __________________NAV_L2___________________, __________________NAV_R2___________________, _______,
+    _______, __________________NAV_L3___________________, __________________NAV_R3___________________, _______,
+    _______, _______, _______, _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, _______, _______, _______, _______
+  ),
+
+  /* GUI (window management/mouse/media controls) layer
+   *
+   *         Mouse keys -----/```````````````````\               /```````````````````\----- Window manager
+   *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
+   *                 │     │Ms B2│Ms Up│Ms B1│Ms WD│     │     │Prev │ NW  │  N  │ NE  │     │
+   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+   *                 │     │Ms L │Ms Dn│Ms R │Ms WU│     │     │Full │  W  │Centr│  E  │     │
+   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+   *                 │     │Undo │ Cut │Copy │Paste│     │     │Next │ SW  │  S  │ SE  │     │
+   *                 ┢━━━━━╅─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╆━━━━━┪
+   *                 ┃     ┃Prev │Play │Next │Brig-│Sleep│Wake │Brig+│Mute │Vol- │Vol+ ┃     ┃
+   *                 ┗━━━━━┹─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┺━━━━━┛
+   *                         \___ Media ___/   \___ Screen/sleep __/   \___ Volume __/
    */
   [CORNER_LAYER] = LAYOUT_planck_grid_wrapper(
-    _______, KC_VOLD, KC_MPRV, KC_MPLY, KC_MNXT, KC_VOLU, KC_HOME, KC_PGDN, KC_PGUP, KC_END,  _______, _______,
-    _______, __________________CNR_R1___________________, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______, _______,
-    _______, __________________CNR_L3___________________, M_LEFT,  M_DOWN,  M_UP,    M_RGHT,  _______, _______,
-    _______, _______, _______, _______, _______, KC_LSFT, KC_LSFT, _______, _______, _______, _______, _______
+    _______, __________________GUI_L1___________________, __________________GUI_R1___________________, _______,
+    _______, __________________GUI_L2___________________, __________________GUI_R2___________________, _______,
+    _______, __________________GUI_L3___________________, __________________GUI_R3___________________, _______,
+    _______, __________MEDIA__________, KC_BRID, _______, _______, KC_BRIU, __________VOLUME_________, _______
   ),
 
   /* Keyboard settings layer
@@ -291,3 +281,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 };
+
+
+#ifdef RGBLIGHT_ENABLE
+void keyboard_post_init_user(void) {
+    unsigned int hue = (int)((311.0 / 350.0) * 255.0);
+    unsigned int sat = 255;
+    unsigned int val = 255;
+    rgblight_enable_noeeprom(); // Enables RGB, without saving settings
+    rgblight_sethsv_noeeprom(hue, sat, val);
+    rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
+}
+#endif
