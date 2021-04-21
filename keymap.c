@@ -43,7 +43,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LSA_TAB, KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,   KC_I,    KC_O,    KC_P,    LSA_QT,
     CTL_ESC, KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,   KC_K,    KC_L,    KC_SCLN, CTL_ENT,
     KC_LSPO, KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,   KC_COMM, KC_DOT,  KC_SLSH, KC_RSPC,
-    CRNR_L,  HYPER_L, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  NAV_SPC, RAISE,  KC_RGUI, KC_RALT, HYPER_R, CRNR_R
+    CORNER,  HYPER_L, KC_LALT, KC_LGUI, LOWER,   KC_SPC,  NAV_SPC, RAISE,  KC_RGUI, KC_RALT, HYPER_R, CORNER
   ),
 
   /* Stitching layer (camel)
@@ -136,47 +136,48 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, KC_BSLS, KC_BSLS, _______, _______, _______, _______, _______
   ),
 
+  //TODO common top layers to .h file
   /* Numeric layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *        Macro -- │" - "│ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │" = "│ -- Macro
+   *                 │ Del │  _  │  +  │  |  │  (  │  ~  │  `  │  )  │  \  │  -  │  =  │BkSpc│
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *    Tap for [ -- │Shift│  -  │  =  │  `  │  \  │  :  │ndash│mdash│  ,  │  .  │  /  │Shift│ -- Tap for ]
-   *                 ├─────┼─────┼─────┼─────╆━━━━━╅─────┴─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │     │     │     ┃     ┃ Backspace │     │     │     │     │     │
-   *                 └─────┴─────┴─────┴─────┺━━━━━┹───────────┴─────┴─────┴─────┴─────┴─────┘
+   *                 ├─────┼─────┼─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+   *                 │     │     │     │     ┃     ┃Space│Space│ ADJ │     │     │     │     │
+   *                 └─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┴─────┴─────┴─────┘
    */
   [LOWER_LAYER] = LAYOUT_planck_grid_wrapper(
-    MY_MINS, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,   KC_F7,   KC_F8,   KC_F9,   KC_F10,  MY_EQL,
+    KC_DEL,  KC_UNDS, KC_PLUS, KC_PIPE, KC_LPRN, KC_TILD, KC_GRV,  KC_RPRN, KC_BSLS, KC_MINS, KC_EQL,  KC_BSPC,
     _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
     KC_LSBR, KC_MINS, KC_EQL,  KC_GRV,  KC_BSLS, KC_COLN, KC_NDSH, KC_MDSH, KC_COMM, KC_DOT,  KC_SLSH, KC_RSBR,
-    _______, _______, _______, _______, _______, KC_SPC,  KC_BSPC, ADJUST,  _______, _______, _______, _______
+    _______, _______, _______, _______, _______, KC_SPC,  KC_SPC,  ADJUST,  _______, _______, _______, _______
   ),
 
   /* Symbol layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *        Macro -- │" + "│ F11 │ F12 │ F13 │ F14 │ F15 │ F16 │ F17 │ F18 │ F19 │ F20 │  _  │
+   *                 │ Del │  _  │  +  │  |  │  (  │  ~  │  `  │  )  │  \  │  -  │  =  │BkSpc│
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │  !  │  @  │  #  │  $  │  %  │  ^  │  &  │  *  │  {  │  }  │     │ \
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤  |-- Mostly shifted version of lower layer
    *    Tap for { -- │Shift│  _  │  +  │  ~  │  |  │  :  │ndash│mdash│  ,  │  .  │  /  │Shift│-/-- Tap for }
-   *                 ├─────┼─────┼─────┼─────┼─────┼─────┴─────╆━━━━━╅─────┼─────┼─────┼─────┤
-   *                 │     │     │     │     │     │  Delete   ┃     ┃     │     │     │     │
-   *                 └─────┴─────┴─────┴─────┴─────┴───────────┺━━━━━┹─────┴─────┴─────┴─────┘
+   *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┤
+   *                 │     │     │     │     │ ADJ │Space│Space┃     ┃     │     │     │     │
+   *                 └─────┴─────┴─────┴─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┘
    */
   [RAISE_LAYER] = LAYOUT_planck_grid_wrapper(
-    MY_PLUS, KC_F11,  KC_F12,  KC_F13,  KC_F14,  KC_F15 , KC_F16,  KC_F17,  KC_F18,  KC_F19,  KC_F20 , KC_UNDS,
+    KC_DEL,  KC_UNDS, KC_PLUS, KC_PIPE, KC_LPRN, KC_TILD, KC_GRV,  KC_RPRN, KC_BSLS, KC_MINS, KC_EQL,  KC_BSPC,
     _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LCBR, KC_RCBR, _______,
     KC_LSCB, KC_UNDS, KC_PLUS, KC_TILD, KC_PIPE, KC_COLN, KC_NDSH, KC_MDSH, KC_COMM, KC_DOT,  KC_SLSH, KC_RSCB,
-    _______, _______, _______, _______, ADJUST,  KC_DEL, KC_DEL, _______, _______, _______, _______, _______
+    _______, _______, _______, _______, ADJUST,  KC_SPC,  KC_SPC,  _______, _______, _______, _______, _______
   ),
 
   /* Directional navigation layer
    *
    *          Large movements -----/```````````````````\   /```````````````````\----- Vim-style arrow keys
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │     │     │     │     │     │     │     │     │     │     │     │
+   *                 │ Del │     │  {  │  [  │  (  │     │     │  )  │  ]  │  }  │     │BkSpc│
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │     │Home │PgUp │PgDn │ End │  ←  │  ↓  │  ↑  │  →  │     │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
@@ -186,7 +187,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 └─────┴─────┴─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┴─────┘
    */
   [NAV_LAYER] = LAYOUT_planck_grid_wrapper(
-    XXXXXXX, __________________NAV_L1___________________, __________________NAV_R1___________________, XXXXXXX,
+    KC_DEL,  KC_UNDS, KC_LCBR, KC_LBRC, KC_LPRN, _______, _______, KC_RPRN, KC_RBRC, KC_RCBR, KC_EQL,  KC_BSPC,
     _______, __________________NAV_L2___________________, __________________NAV_R2___________________, _______,
     _______, __________________NAV_L3___________________, __________________NAV_R3___________________, _______,
     _______, _______, _______, _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, _______, _______, _______, _______
@@ -196,40 +197,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *
    *         Mouse keys -----/```````````````````\               /```````````````````\----- Window manager
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │Ms B2│Ms Up│Ms B1│Ms WD│     │     │Prev │ NW  │  N  │ NE  │     │
+   *                 │     │Ms B2│Prev │Play │Next │     │     │Prev │ NW  │  N  │ NE  │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │Ms L │Ms Dn│Ms R │Ms WU│     │     │Full │  W  │Centr│  E  │     │
+   *                 │     │Ms L │Mute │Vol- │Vol+ │     │     │Full │  W  │Centr│  E  │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │Undo │ Cut │Copy │Paste│     │     │Next │ SW  │  S  │ SE  │     │
    *                 ┢━━━━━╅─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╆━━━━━┪
-   *                 ┃     ┃Prev │Play │Next │Brig-│Sleep│Wake │Brig+│Mute │Vol- │Vol+ ┃     ┃
+   *                 ┃     ┃     │     │     │     │Bkspc│ Del │     │     │     │     ┃     ┃
    *                 ┗━━━━━┹─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┺━━━━━┛
    *                         \___ Media ___/   \___ Screen/sleep __/   \___ Volume __/
    */
   [CORNER_LAYER] = LAYOUT_planck_grid_wrapper(
-    _______, __________________GUI_L1___________________, __________________GUI_R1___________________, _______,
-    _______, __________________GUI_L2___________________, __________________GUI_R2___________________, _______,
+    _______, _______, __________MEDIA__________, _______, __________________GUI_R1___________________, _______,
+    _______, _______, __________VOLUME_________, _______, __________________GUI_R2___________________, _______,
     _______, __________________GUI_L3___________________, __________________GUI_R3___________________, _______,
-    _______, __________MEDIA__________, KC_BRID, _______, _______, KC_BRIU, __________VOLUME_________, _______
+    _______, _______, _______, _______, _______, KC_BSPC, KC_DEL,  _______, _______, _______, _______, _______
   ),
 
   /* Keyboard settings layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │Reset│     │     │     │     │     │     │ Ins │     │PrScn│     │
+   *                 │ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │ F11 │ F12 │
    *                 ├─────╆━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━╅─────┼─────┤
    *                 │     ┃                          MACROS                     ┃Play1│Rec 1│ -- Record/play macro 1
    *                 ├─────╄━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━╃─────┼─────┤
    *                 │     │     │     │Caps │     │     │     │     │     │     │Play2│Rec 2│ -- Record/play macro 2
    *                 ├─────┼─────┼─────┼─────╆━━━━━╅─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┤
-   *                 │     │     │Swap │Norm ┃     ┃  Toggle   ┃     ┃Toggl│Brig-│Brig+│Stop │ -- Stop recording macro
+   *                 │     │     │Swap │Norm ┃     ┃   RESET   ┃     ┃Toggl│Brig-│Brig+│Stop │ -- Stop recording macro
    *                 └─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┘
    *                Swap GUI/Alt _/________/             \_____________\_ Backlight _/
    */
   [ADJUST_LAYER] = LAYOUT_planck_grid_wrapper(
-    XXXXXXX, RESET,    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_INS,   XXXXXXX,  KC_PSCR, XXXXXXX,
+    KC_F1,   KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,  KC_F12,
     XXXXXXX, KC_MAC_A, KC_MAC_S, KC_MAC_D, KC_MAC_F, KC_MAC_G, KC_MAC_H, KC_MAC_J, KC_MAC_K, KC_MAC_L, DM_PLY1, DM_REC1,
     XXXXXXX, XXXXXXX,  XXXXXXX,  KC_CAPS,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DM_PLY2, DM_REC2,
-    XXXXXXX, XXXXXXX,  AG_SWAP,  AG_NORM,  _______,  _______, _______, _______,   XXXXXXX,  XXXXXXX,  XXXXXXX, DM_RSTP
+    XXXXXXX, XXXXXXX,  AG_SWAP,  AG_NORM,  _______,  RESET,    RESET,    _______,  XXXXXXX,  XXXXXXX,  XXXXXXX, DM_RSTP
   )
 };
 
@@ -283,13 +284,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 };
 
 
+void convert_hsl_scale(float *hue, float *sat, float *val)
+{
+    *hue = *hue / 350.0 * 255.0;
+    *sat = *sat * 255.0;
+    *val = *val * 255.0;
+}
+
+
 #ifdef RGBLIGHT_ENABLE
 void keyboard_post_init_user(void) {
-    unsigned int hue = (int)((311.0 / 350.0) * 255.0);
-    unsigned int sat = 255;
-    unsigned int val = 255;
+    float h = 25.0;
+    float s = 0.59;
+    float l = 0.54;
+
+    convert_hsl_scale(&h, &s, &l);
+
     rgblight_enable_noeeprom(); // Enables RGB, without saving settings
-    rgblight_sethsv_noeeprom(hue, sat, val);
+    rgblight_sethsv_noeeprom((int)h, (int)s, (int)l);
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
 }
 #endif

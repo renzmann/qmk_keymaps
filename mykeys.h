@@ -42,6 +42,7 @@ enum user_keycodes {
 #define ADJUST MO(ADJUST_LAYER)
 #define CRNR_L LT(CORNER_LAYER, KC_LBRC)
 #define CRNR_R LT(CORNER_LAYER, KC_RBRC)
+#define CORNER MO(CORNER_LAYER)
 #define NAV   MO(NAV_LAYER)
 
 // Modified
@@ -90,11 +91,11 @@ enum user_keycodes {
 #define __________________CNR_R1___________________ DF(WPATH_LAYER), DF(CAMEL_LAYER), DF(KEBAB_LAYER), DF(SNAKE_LAYER), DF(PATH_LAYER)
 #define __________________CNR_L3___________________ LCTL(KC_Z), LCTL(KC_X), LCTL(KC_INS), LSFT(KC_INS), XXXXXXX
 
-#define __________________NAV_L1___________________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+#define __________________NAV_L1___________________ XXXXXXX, XXXXXXX, KC_RCBR, KC_LCBR, XXXXXXX
 #define __________________NAV_L2___________________ XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END
 #define __________________NAV_L3___________________ XXXXXXX, LGUI(KC_LEFT), LGUI(KC_UP), LGUI(KC_DOWN), LGUI(KC_RGHT)
 
-#define __________________NAV_R1___________________ XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX
+#define __________________NAV_R1___________________ XXXXXXX, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX
 #define __________________NAV_R2___________________ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX
 #define __________________NAV_R3___________________ LALT(KC_LEFT), LALT(KC_DOWN), LALT(KC_UP), LALT(KC_RGHT), XXXXXXX
 
