@@ -37,13 +37,13 @@ enum user_keycodes {
 };
 
 // Layers
-#define LOWER MO(LOWER_LAYER)
-#define RAISE MO(RAISE_LAYER)
+#define LOWER  MO(LOWER_LAYER)
+#define RAISE  MO(RAISE_LAYER)
 #define ADJUST MO(ADJUST_LAYER)
 #define CRNR_L LT(CORNER_LAYER, KC_LBRC)
 #define CRNR_R LT(CORNER_LAYER, KC_RBRC)
 #define CORNER MO(CORNER_LAYER)
-#define NAV   MO(NAV_LAYER)
+#define NAV    MO(NAV_LAYER)
 
 // Modified
 #define M_LEFT G(KC_LEFT)
