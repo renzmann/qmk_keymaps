@@ -139,37 +139,37 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //TODO common top layers to .h file
   /* Numeric layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │ Del │  _  │  +  │  |  │  (  │  ~  │  `  │  )  │  \  │  -  │  =  │BkSpc│
+   *                 │ Del │  _  │  +  │  |  │  ~  │  (  │  )  │  `  │  \  │  -  │  =  │BkSpc│
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *    Tap for [ -- │Shift│  -  │  =  │  `  │  \  │  :  │ndash│mdash│  ,  │  .  │  /  │Shift│ -- Tap for ]
+   *    Tap for [ -- │Shift│  -  │  =  │  `  │  [  │  {  │  }  │  ]  │  ,  │  .  │  /  │Shift│ -- Tap for ]
    *                 ├─────┼─────┼─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │     │     │     ┃     ┃Space│Space│ ADJ │     │     │     │     │
    *                 └─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┴─────┴─────┴─────┘
    */
   [LOWER_LAYER] = LAYOUT_planck_grid_wrapper(
-    KC_DEL,  KC_UNDS, KC_PLUS, KC_PIPE, KC_LPRN, KC_TILD, KC_GRV,  KC_RPRN, KC_BSLS, KC_MINS, KC_EQL,  KC_BSPC,
+    KC_DEL,  KC_UNDS, KC_PLUS, KC_PIPE, KC_TILD, KC_LPRN, KC_RPRN, KC_GRV,  KC_BSLS, KC_MINS, KC_EQL,  KC_BSPC,
     _______, KC_1,    KC_2,    KC_3,    KC_4,    KC_5,    KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______,
-    KC_LSBR, KC_MINS, KC_EQL,  KC_GRV,  KC_BSLS, KC_COLN, KC_NDSH, KC_MDSH, KC_COMM, KC_DOT,  KC_SLSH, KC_RSBR,
+    KC_LSBR, KC_MINS, KC_EQL,  KC_GRV,  KC_LBRC, KC_LCBR, KC_RCBR, KC_RBRC, KC_COMM, KC_DOT,  KC_SLSH, KC_RSBR,
     _______, _______, _______, _______, _______, KC_SPC,  KC_SPC,  ADJUST,  _______, _______, _______, _______
   ),
 
   /* Symbol layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │ Del │  _  │  +  │  |  │  (  │  ~  │  `  │  )  │  \  │  -  │  =  │BkSpc│
+   *                 │ Del │  _  │  +  │  |  │  ~  │  (  │  )  │  `  │  \  │  -  │  =  │BkSpc│
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │  !  │  @  │  #  │  $  │  %  │  ^  │  &  │  *  │  {  │  }  │     │ \
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤  |-- Mostly shifted version of lower layer
-   *    Tap for { -- │Shift│  _  │  +  │  ~  │  |  │  :  │ndash│mdash│  ,  │  .  │  /  │Shift│-/-- Tap for }
+   *    Tap for { -- │Shift│  _  │  +  │  ~  │  [  │  {  │  }  │  ]  │  ,  │  .  │  /  │Shift│-/-- Tap for }
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┤
    *                 │     │     │     │     │ ADJ │Space│Space┃     ┃     │     │     │     │
    *                 └─────┴─────┴─────┴─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┘
    */
   [RAISE_LAYER] = LAYOUT_planck_grid_wrapper(
-    KC_DEL,  KC_UNDS, KC_PLUS, KC_PIPE, KC_LPRN, KC_TILD, KC_GRV,  KC_RPRN, KC_BSLS, KC_MINS, KC_EQL,  KC_BSPC,
+    KC_DEL,  KC_UNDS, KC_PLUS, KC_PIPE, KC_TILD, KC_LPRN, KC_RPRN, KC_GRV,  KC_BSLS, KC_MINS, KC_EQL,  KC_BSPC,
     _______, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC, KC_CIRC, KC_AMPR, KC_ASTR, KC_LCBR, KC_RCBR, _______,
-    KC_LSCB, KC_UNDS, KC_PLUS, KC_TILD, KC_PIPE, KC_COLN, KC_NDSH, KC_MDSH, KC_COMM, KC_DOT,  KC_SLSH, KC_RSCB,
+    KC_LSCB, KC_UNDS, KC_PLUS, KC_TILD, KC_LBRC, KC_LCBR, KC_RCBR, KC_RBRC, KC_COMM, KC_DOT,  KC_SLSH, KC_RSCB,
     _______, _______, _______, _______, ADJUST,  KC_SPC,  KC_SPC,  _______, _______, _______, _______, _______
   ),
 
@@ -284,24 +284,24 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 };
 
 
-void convert_hsl_scale(float *hue, float *sat, float *val)
+void convert_hsl_scale(int *hue, int *sat, int *val)
 {
-    *hue = *hue / 350.0 * 255.0;
-    *sat = *sat * 255.0;
-    *val = *val * 255.0;
+    *hue = (int)((float)*hue / 360.0 * 255.0);
+    *sat = (int)((float)*sat * 255.0);
+    *val = (int)((float)*val * 255.0);
 }
 
 
 #ifdef RGBLIGHT_ENABLE
 void keyboard_post_init_user(void) {
-    float h = 25.0;
-    float s = 0.59;
-    float l = 0.54;
+    /* int h = 55; */
+    /* int s = 59; */
+    /* int l = 54; */
 
-    convert_hsl_scale(&h, &s, &l);
+    /* convert_hsl_scale(&h, &s, &l); */
 
     rgblight_enable_noeeprom(); // Enables RGB, without saving settings
-    rgblight_sethsv_noeeprom((int)h, (int)s, (int)l);
+    rgblight_sethsv_noeeprom(HSV_GOLDENROD);
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
 }
 #endif
