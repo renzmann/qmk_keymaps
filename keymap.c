@@ -173,6 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, ADJUST,  KC_SPC,  KC_SPC,  _______, _______, _______, _______, _______
   ),
 
+  // TODO move the parens back toward the center
   /* Directional navigation layer
    *
    *          Large movements -----/```````````````````\   /```````````````````\----- Vim-style arrow keys
@@ -193,6 +194,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, XXXXXXX, XXXXXXX, _______, XXXXXXX, _______, _______, _______, _______
   ),
 
+  // TODO rename from "corner" to something else
   /* GUI (window management/mouse/media controls) layer
    *
    *         Mouse keys -----/```````````````````\               /```````````````````\----- Window manager
@@ -205,7 +207,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 ├─────┼─────┼─────┼─────┼─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┼─────┤
    *                 │     │     │     │     │     │     ┃     ┃     │     │     │     │     │
    *                 └─────┴─────┴─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┴─────┘
-   *                         \___ Media ___/   \___ Screen/sleep __/   \___ Volume __/
    */
   [CORNER_LAYER] = LAYOUT_planck_grid_wrapper(
     _______, _______, __________MEDIA__________, _______, __________________GUI_R1___________________, _______,
