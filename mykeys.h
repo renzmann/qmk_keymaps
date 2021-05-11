@@ -66,6 +66,7 @@ enum user_keycodes {
 #define NAV_BSP  LT(NAV_LAYER, KC_BSPC)
 #define NAV_SPC  LT(NAV_LAYER, KC_SPC)
 #define CNR_SPC  LT(CORNER_LAYER, KC_SPC)
+#define SFT_SPC  SFT_T(KC_SPC)
 
 // Stitching keys
 #define CAPITAL OSM(MOD_LSFT)
