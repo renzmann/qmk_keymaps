@@ -37,7 +37,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *  Tap for Esc -- │  ⌃  │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  ⌃  │ -- Tap for Enter
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │  ⇧  │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  ⇧  │
+   *                 │ NAV │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  ⇧  │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │ CNR │Hyper│  ⌥  │  ⌘  │  ↓  │SfSpc│NAVSp│  ↑  │  ⌘  │  ⌥  │Hyper│ CNR │
    *                 └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
@@ -47,8 +47,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [QWERTY_LAYER] = LAYOUT_planck_grid_wrapper(
     LSA_TAB, _________________QWERTY_L1_________________, _________________QWERTY_R1_________________, LSA_QT,
     CTL_ESC, _________________QWERTY_L2_________________, _________________QWERTY_R2_________________, CTL_ENT,
-    KC_LSPO, _________________QWERTY_L3_________________, _________________QWERTY_R3_________________, KC_RSPC,
-    CORNER,  HYPER_L, KC_LGUI, KC_LALT, LOWER,   SFT_SPC, NAV_SPC, RAISE,   KC_RALT, KC_RGUI, HYPER_R, CORNER
+    NAV,     _________________QWERTY_L3_________________, _________________QWERTY_R3_________________, KC_RSPC,
+    CORNER,  HYPER_L, KC_LALT, KC_LGUI, LOWER,   SFT_SPC, NAV_SPC, RAISE,   KC_RGUI, KC_RALT, HYPER_R, CORNER
   ),
 
   /* Stitching layer (camel)
