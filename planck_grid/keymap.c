@@ -14,10 +14,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/* This keymap is a modified fork of Noah Frederick's:
- * https://github.com/noahfrederick/qmk-keymaps
- */
-
 
 #include QMK_KEYBOARD_H
 #include "mymacro.h"
@@ -30,7 +26,7 @@
 //   Should we also take shift off the pinkies? Check on F-key layer first.
 //   Could put Alt in this spot
 // Testing parens on left trough to see if we like it better there
-// Add the stitching layer switches back in
+// Get a copy of config.h into the repo
 
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
