@@ -86,7 +86,7 @@ enum user_keycodes {
 #define _________________QWERTY_R3_________________ KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
 
-#define _________________SPECIAL_L_________________ KC_UNDS, KC_PLUS, KC_LPRN, KC_TILD, KC_PIPE
+#define _________________SPECIAL_L_________________ KC_PLUS, KC_UNDS, KC_LPRN, KC_TILD, KC_PIPE
 #define _________________SPECIAL_R_________________ KC_BSLS, KC_GRV,  KC_RPRN, KC_MINS, KC_EQL
 
 #define __________________NUMS_L___________________ KC_1,    KC_2,    KC_3,    KC_4,    KC_5
@@ -106,9 +106,9 @@ enum user_keycodes {
 #define __________________NAV_R2___________________ M_DOWN,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGUP
 #define __________________NAV_R3___________________ _______, M_LEFT,  _______, M_RGHT,  KC_PGDN
 
-#define _________________CORNER_L1_________________ _______, KC_DEL,  KC_DEL,  _______, _______
-#define _________________CORNER_L2_________________ _______, KC_BSPC, KC_BSPC, _______, _______
-#define _________________CORNER_L3_________________ _______, _______, _______, _______, _______
+#define _________________CORNER_R1_________________ _______, KC_DEL,  KC_DEL,  _______, _______
+#define _________________CORNER_R2_________________ _______, KC_BSPC, KC_BSPC, _______, _______
+#define _________________CORNER_R3_________________ _______, _______, _______, _______, _______
 
 #define _______________STITCH_SWITCH_______________ _______, CAMEL,   SNAKE,   KEBAB,   _______
 
