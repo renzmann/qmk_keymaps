@@ -44,6 +44,9 @@ enum user_keycodes {
 #define CRNR_R LT(CORNER_LAYER, KC_RBRC)
 #define CORNER MO(CORNER_LAYER)
 #define NAV    MO(NAV_LAYER)
+#define CAMEL  DF(CAMEL_LAYER)
+#define SNAKE  DF(SNAKE_LAYER)
+#define KEBAB  DF(KEBAB_LAYER)
 
 // Modified
 #define M_LEFT G(KC_LEFT)
@@ -72,45 +75,47 @@ enum user_keycodes {
 #define CAPITAL OSM(MOD_LSFT)
 #define GUI_GRV LGUI(KC_GRV)
 #define STCH_EX DF(QWERTY_LAYER)
-#define KC_NDSH LALT(KC_MINS)
-#define KC_MDSH S(LALT(KC_MINS))
-
-// Window manager keys
-#define WM_FULL LALT(LGUI(KC_F))
-#define WM_NEXT LCTL(LALT(LGUI(KC_RGHT)))
-#define WM_PREV LCTL(LALT(LGUI(KC_LEFT)))
-#define WM_NW   LCTL(LGUI(KC_LEFT))
-#define WM_N    LALT(LGUI(KC_UP))
-#define WM_NE   LCTL(LGUI(KC_RGHT))
-#define WM_E    LALT(LGUI(KC_RGHT))
-#define WM_SE   S(LCTL(LGUI(KC_RGHT)))
-#define WM_S    LALT(LGUI(KC_DOWN))
-#define WM_SW   S(LCTL(LGUI(KC_LEFT)))
-#define WM_W    LALT(LGUI(KC_LEFT))
-#define WM_CNTR LALT(LGUI(KC_C))
 
 // Common rows
-#define __________________CNR_R1___________________ DF(WPATH_LAYER), DF(CAMEL_LAYER), DF(KEBAB_LAYER), DF(SNAKE_LAYER), DF(PATH_LAYER)
-#define __________________CNR_L3___________________ LCTL(KC_Z), LCTL(KC_X), LCTL(KC_INS), LSFT(KC_INS), XXXXXXX
+#define _________________QWERTY_L1_________________ KC_Q,    KC_W,    KC_E,    KC_R,    KC_T
+#define _________________QWERTY_L2_________________ KC_A,    KC_S,    KC_D,    KC_F,    KC_G
+#define _________________QWERTY_L3_________________ KC_Z,    KC_X,    KC_C,    KC_V,    KC_B
 
-#define __________________NAV_L1___________________ XXXXXXX, XXXXXXX, KC_RCBR, KC_LCBR, XXXXXXX
-#define __________________NAV_L2___________________ XXXXXXX, KC_HOME, KC_PGUP, KC_PGDN, KC_END
-#define __________________NAV_L3___________________ XXXXXXX, LGUI(KC_LEFT), LGUI(KC_UP), LGUI(KC_DOWN), LGUI(KC_RGHT)
+#define _________________QWERTY_R1_________________ KC_Y,    KC_U,    KC_I,    KC_O,    KC_P
+#define _________________QWERTY_R2_________________ KC_H,    KC_J,    KC_K,    KC_L,    KC_SCLN
+#define _________________QWERTY_R3_________________ KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH
 
-#define __________________NAV_R1___________________ XXXXXXX, KC_LPRN, KC_RPRN, XXXXXXX, XXXXXXX
-#define __________________NAV_R2___________________ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX
-#define __________________NAV_R3___________________ LALT(KC_LEFT), LALT(KC_DOWN), LALT(KC_UP), LALT(KC_RGHT), XXXXXXX
 
-#define __________________GUI_L1___________________ KC_BTN2, KC_MS_U, KC_BTN1, KC_WH_D, XXXXXXX
-#define __________________GUI_L2___________________ KC_MS_L, KC_MS_D, KC_MS_R, KC_WH_U, XXXXXXX
-#define __________________GUI_L3___________________ KC_UNDO, KC_CUT,  KC_COPY, KC_PSTE, XXXXXXX
+#define _________________SPECIAL_L_________________ KC_UNDS, KC_PLUS, KC_LPRN, KC_TILD, KC_PIPE
+#define _________________SPECIAL_R_________________ KC_BSLS, KC_GRV,  KC_RPRN, KC_MINS, KC_EQL
 
-#define __________________GUI_R1___________________ XXXXXXX, WM_PREV, WM_NW,   WM_N,    WM_NE
-#define __________________GUI_R2___________________ XXXXXXX, WM_FULL, WM_W,    WM_CNTR, WM_E
-#define __________________GUI_R3___________________ XXXXXXX, WM_NEXT, WM_SW,   WM_S,    WM_SE
+#define __________________NUMS_L___________________ KC_1,    KC_2,    KC_3,    KC_4,    KC_5
+#define __________________NUMS_R___________________ KC_6,    KC_7,    KC_8,    KC_9,    KC_0
+
+#define _________________NUMUP_L___________________ KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
+#define _________________NUMUP_R___________________ KC_CIRC, KC_AMPR, KC_ASTR, KC_LCBR, KC_RCBR
+
+#define _________________TROUGH_L__________________ _______, KC_LPRN, KC_RPRN, KC_LBRC, KC_LCBR
+#define _________________TROUGH_R__________________ KC_RCBR, KC_RBRC, KC_COMM, KC_DOT,  KC_SLSH
+
+#define __________________NAV_L1___________________ KC_PLUS, KC_UNDS, KC_PGUP, _______, _______
+#define __________________NAV_L2___________________ _______, KC_HOME, KC_PGDN, KC_END,  _______
+#define __________________NAV_L3___________________ _______, _______, _______, _______, _______
+
+#define __________________NAV_R1___________________ M_UP,    KC_HOME, KC_UP,   KC_END,  KC_EQL
+#define __________________NAV_R2___________________ M_DOWN,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGUP
+#define __________________NAV_R3___________________ _______, M_LEFT,  _______, M_RGHT,  KC_PGDN
+
+#define _________________CORNER_L1_________________ _______, KC_DEL,  KC_DEL,  _______, _______
+#define _________________CORNER_L2_________________ _______, KC_BSPC, KC_BSPC, _______, _______
+#define _________________CORNER_L3_________________ _______, _______, _______, _______, _______
+
+#define _______________STITCH_SWITCH_______________ _______, CAMEL,   SNAKE,   KEBAB,   _______
 
 #define __________VOLUME_________ KC_MUTE, KC_VOLD, KC_VOLU
 #define __________MEDIA__________ KC_MPRV, KC_MPLY, KC_MNXT
 
 // Expands the row #define things above
 #define LAYOUT_planck_grid_wrapper(...) LAYOUT_planck_grid(__VA_ARGS__)
+#define LAYOUT_planck_2x2u_wrapper(...) LAYOUT_planck_2x2u(__VA_ARGS__)
+
