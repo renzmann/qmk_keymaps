@@ -32,7 +32,6 @@ enum user_keycodes {
   KC_MAC_H,
   KC_MAC_J,
   KC_MAC_K,
-  KC_MAC_L,
   NEW_SAFE_RANGE
 };
 
@@ -59,8 +58,8 @@ enum user_keycodes {
 #define KC_RSBR  SFT_T(KC_RBRC)
 #define KC_LSCB  SFT_T(KC_LCBR)
 #define KC_RSCB  SFT_T(KC_RCBR)
-#define HYPER_L  C_S_T(KC_RBRC)
-#define HYPER_R  C_S_T(KC_LBRC)
+#define HYPER_L  C_S_T(KC_LBRC)
+#define HYPER_R  C_S_T(KC_RBRC)
 #define LSA_TAB  LSA_T(KC_TAB)
 #define LSA_QT   LSA_T(KC_QUOT)
 #define CTL_ESC  LCTL_T(KC_ESC)
@@ -95,8 +94,8 @@ enum user_keycodes {
 #define _________________NUMUP_L___________________ KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
 #define _________________NUMUP_R___________________ KC_CIRC, KC_AMPR, KC_ASTR, KC_LCBR, KC_RCBR
 
-#define _________________TROUGH_L__________________ _______, KC_LPRN, KC_RPRN, KC_LBRC, KC_LCBR
-#define _________________TROUGH_R__________________ KC_RCBR, KC_RBRC, KC_COMM, KC_DOT,  KC_SLSH
+#define _________________TROUGH_L__________________ _______, KC_LCBR, KC_RCBR, KC_LBRC, _______
+#define _________________TROUGH_R__________________ _______, KC_RBRC, KC_COMM, KC_DOT,  KC_SLSH
 
 #define __________________NAV_L1___________________ KC_PLUS, KC_UNDS, KC_PGUP, _______, _______
 #define __________________NAV_L2___________________ _______, KC_HOME, KC_PGDN, KC_END,  _______
@@ -108,7 +107,7 @@ enum user_keycodes {
 
 #define _________________CORNER_R1_________________ _______, KC_DEL,  KC_DEL,  _______, _______
 #define _________________CORNER_R2_________________ _______, KC_BSPC, KC_BSPC, _______, _______
-#define _________________CORNER_R3_________________ _______, _______, _______, _______, _______
+#define _________________CORNER_R3_________________ _______, KC_TAB,  KC_TAB,  _______, _______
 
 #define _______________STITCH_SWITCH_______________ _______, CAMEL,   SNAKE,   KEBAB,   _______
 
