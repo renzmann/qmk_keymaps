@@ -33,21 +33,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Base layer (Qwerty)
    * LSA = left shift + left alt
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   * Hold for LSA -- │  ⇥  │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  '  │ -- Hold for LSA
+   *  Hold for ⌥⇧ -- │  ⇥  │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  '  │ -- Hold for ⌥⇧
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *  Tap for Esc -- │  ⌃  │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  ⌃  │ -- Tap for Enter
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │ NAV │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  ⇧  │
+   *    Tap for ( -- │  ⇧  │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  ⇧  │ -- Tap for )
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │ CNR │Hyper│  ⌥  │  ⌘  │  ↓  │SfSpc│NAVSp│  ↑  │  ⌘  │  ⌥  │Hyper│ CNR │
+   *                 │ CNR │ ⌃⇧  │  ⌥  │  ⌘  │  ↓  │SfSpc│NAVSp│  ↑  │  ⌘  │  ⌥  │ ⌃⇧  │ CNR │
    *                 └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
    *                         /                                                     /
-   *    Tap for ] [ --------'-----------------------------------------------------'
+   *    Tap for [ ] --------'-----------------------------------------------------'
    */
   [QWERTY_LAYER] = LAYOUT_planck_grid_wrapper(
     LSA_TAB, _________________QWERTY_L1_________________, _________________QWERTY_R1_________________, LSA_QT,
     CTL_ESC, _________________QWERTY_L2_________________, _________________QWERTY_R2_________________, CTL_ENT,
-    NAV,     _________________QWERTY_L3_________________, _________________QWERTY_R3_________________, KC_RSPC,
+    KC_LSPO, _________________QWERTY_L3_________________, _________________QWERTY_R3_________________, KC_RSPC,
     CORNER,  HYPER_L, KC_LALT, KC_LGUI, LOWER,   SFT_SPC, NAV_SPC, RAISE,   KC_RGUI, KC_RALT, HYPER_R, CORNER
   ),
 
@@ -141,14 +141,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______, _______, _______, _______, _______, KC_LSFT, KC_BSLS, _______, _______, _______, _______, _______
   ),
 
-  //TODO common top layers to .h file
   /* Numeric layer
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
    *                 │     │  +  │  _  │  (  │  ~  │  |  │  \  │  `  │  )  │  -  │  =  │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │  1  │  2  │  3  │  4  │  5  │  6  │  7  │  8  │  9  │  0  │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │     │  (  │  )  │  [  │  {  │  }  │  ]  │  ,  │  .  │  /  │     │
+   *                 │     │     │  {  │  }  │  [  │     │     │  ]  │  ,  │  .  │  /  │     │
    *                 ├─────┼─────┼─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │     │     │     ┃     ┃     │     │ ADJ │     │     │     │     │
    *                 └─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┴─────┴─────┴─────┘
@@ -166,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *                 │     │  !  │  @  │  #  │  $  │  %  │  ^  │  &  │  *  │  {  │  }  │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │     │  (  │  )  │  [  │  {  │  }  │  ]  │  ,  │  .  │  /  │     │
+   *                 │     │     │  {  │  }  │  [  │     │     │  ]  │  ,  │  .  │  /  │     │
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┤
    *                 │     │     │     │     │ ADJ │     │     ┃     ┃     │     │     │     │
    *                 └─────┴─────┴─────┴─────┴─────┴─────┴─────┺━━━━━┹─────┴─────┴─────┴─────┘
@@ -198,13 +197,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   /* Corner (window management/mouse/media controls) layer
-   *
+   *                                                   ,----- Del/BS with left hand only when using mouse (hold corner with palm)
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │     │     │Prev │Play │Next │ Del │     │ Del │ Del │     │     │     │
+   *                 │     │     │Prev │Play │Next │ Del │     │ Del │ Del │     │     │     │ -- Trill to delete
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │     │Mute │Vol- │Vol+ │BkSpc│     │BkSpc│BkSpc│     │     │     │
+   *                 │     │     │Mute │Vol- │Vol+ │BkSpc│     │BkSpc│BkSpc│     │     │     │ -- Trill to backspace
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │     │     │CAMEL│SNAKE│KEBAB│     │     │     │     │     │     │     │
+   *                 │     │     │CAMEL│SNAKE│KEBAB│     │     │ Tab │ Tab │     │     │     │ -- Swiftly cycle through tab menus
    *                 ┢━━━━━╅─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────╆━━━━━┪
    *                 ┃     ┃     │     │     │     │     │     │     │     │     │     ┃     ┃
    *                 ┗━━━━━┹─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┺━━━━━┛
@@ -217,11 +216,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   /* Keyboard settings layer
+   *                          ,--------- F-keys centered over matching #'s ---------.
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *                 │ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │ F11 │ F12 │
-   *                 ├─────╆━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━╅─────┼─────┤
-   *                 │     ┃                          MACROS                     ┃     │     │
-   *                 ├─────╄━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━╃─────┼─────┤
+   *                 │     │ F1  │ F2  │ F3  │ F4  │ F5  │ F6  │ F7  │ F8  │ F9  │ F10 │     │
+   *                 ├─────╆━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━┷━━━━━╅─────┼─────┼─────┤
+   *                 │     ┃                      MACROS                   ┃ F11 │ F12 │     │
+   *                 ├─────╄━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━┯━━━━━╃─────┼─────┼─────┤
    *                 │     │     │Swap │Norm │     │     │Stop │Rec 1│Play1│Rec 2│Play2│     │
    *                 ├─────┼─────┼─────┼─────╆━━━━━╅─────┼─────╆━━━━━╅─────┼─────┼─────┼─────┤
    *                 │     │     │     │     ┃     ┃   RESET   ┃     ┃     │     │     │     │
@@ -229,16 +229,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                Swap GUI/Alt _/________/
    */
   [ADJUST_LAYER] = LAYOUT_planck_grid_wrapper(
-    KC_F1,   KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,   KC_F11,  KC_F12,
-    _______, KC_MAC_A, KC_MAC_S, KC_MAC_D, KC_MAC_F, KC_MAC_G, KC_MAC_H, KC_MAC_J, KC_MAC_K, KC_MAC_L, _______, _______,
+    _______, KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,    KC_F6,    KC_F7,    KC_F8,    KC_F9,    KC_F10,  _______,
+    _______, KC_MAC_A, KC_MAC_S, KC_MAC_D, KC_MAC_F, KC_MAC_G, KC_MAC_H, KC_MAC_J, KC_MAC_K, KC_F11,   KC_F12,  _______,
     _______, XXXXXXX,  AG_SWAP,  AG_NORM,  XXXXXXX,  XXXXXXX,  XXXXXXX,  DM_REC1,  DM_PLY1,  DM_REC2,  DM_PLY2, _______,
-    XXXXXXX, _______,  _______,  _______,  _______,  RESET,    RESET,    _______,  _______,  _______,  _______, _______
+    _______, _______,  _______,  _______,  _______,  RESET,    RESET,    _______,  _______,  _______,  _______, _______
   )
 };
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-
     /* Macros defined in mymacro.h. This includes things like passwords, so
      * I don't check this one into source control
      */
@@ -277,31 +276,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             case KC_MAC_K: ;
                 SEND_STRING(MAC_K);
                 return false; break;
-            case KC_MAC_L: ;
-                SEND_STRING(MAC_L);
-                return false; break;
         }
     }
     return true;
 };
 
-
-void convert_hsl_scale(int *hue, int *sat, int *val)
-{
-    *hue = (int)((float)*hue / 360.0 * 255.0);
-    *sat = (int)((float)*sat * 255.0);
-    *val = (int)((float)*val * 255.0);
-}
-
-
 #ifdef RGBLIGHT_ENABLE
 void keyboard_post_init_user(void) {
-    /* int h = 55; */
-    /* int s = 59; */
-    /* int l = 54; */
-
-    /* convert_hsl_scale(&h, &s, &l); */
-
     rgblight_enable_noeeprom(); // Enables RGB, without saving settings
     rgblight_sethsv_noeeprom(HSV_GOLDENROD);
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
