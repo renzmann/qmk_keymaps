@@ -19,15 +19,6 @@
 #include "mymacro.h"
 #include "mykeys.h"
 
-// TODO and notes
-// No need for a Ctrl+Shift key with Shift on the thumb. Could put Ctrl where
-// Ctrl+Shift is.
-//   (except in case of Ctrl+Alt+Shift? The reach here seems easy on pinky + ring)
-//   Should we also take shift off the pinkies? Check on F-key layer first.
-//   Could put Alt in this spot
-// Testing parens on left trough to see if we like it better there
-// Get a copy of config.h into the repo
-
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Base layer (Qwerty)
