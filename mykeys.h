@@ -62,12 +62,14 @@ enum user_keycodes {
 #define HYPER_R  C_S_T(KC_RBRC)
 #define LSA_TAB  LSA_T(KC_TAB)
 #define LSA_QT   LSA_T(KC_QUOT)
+#define LSA_ENT  LSA_T(KC_ENT)
 #define CTL_ESC  LCTL_T(KC_ESC)
+#define CTL_QUOT LCTL_T(KC_QUOT)
 #define CTL_ENT  RCTL_T(KC_ENT)
 #define NAV_SCLN LT(NAV_LAYER, KC_SCLN)
 #define NAV_BSP  LT(NAV_LAYER, KC_BSPC)
 #define NAV_SPC  LT(NAV_LAYER, KC_SPC)
-#define CNR_SPC  LT(CORNER_LAYER, KC_SPC)
+#define CNR_GRV  LT(CORNER_LAYER, KC_GRV)
 #define SFT_SPC  SFT_T(KC_SPC)
 
 // Stitching keys
