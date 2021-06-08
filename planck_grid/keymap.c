@@ -22,7 +22,6 @@
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Base layer (Qwerty)
-   * TODO we'll have to define our own tapdance thing to get underscore on tap: https://beta.docs.qmk.fm/using-qmk/software-features/feature_tap_dance#example-5-using-tap-dance-for-advanced-mod-tap-and-layer-tap-keys-id-example-5
    * LSA = left shift + left alt
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
    *  Hold for ⌥  -- │  ⇥  │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  '  │ -- Hold for ⌥
