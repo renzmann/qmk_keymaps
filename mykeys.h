@@ -38,7 +38,7 @@ enum user_keycodes {
 // Layers
 #define LOWER  MO(LOWER_LAYER)
 #define RAISE  MO(RAISE_LAYER)
-#define ADJUST MO(ADJUST_LAYER)
+#define ADJUST LT(ADJUST_LAYER, KC_UNDS)
 #define CRNR_L LT(CORNER_LAYER, KC_LBRC)
 #define CRNR_R LT(CORNER_LAYER, KC_RBRC)
 #define CORNER MO(CORNER_LAYER)
@@ -58,10 +58,10 @@ enum user_keycodes {
 #define KC_RSBR  SFT_T(KC_RBRC)
 #define KC_LSCB  SFT_T(KC_LCBR)
 #define KC_RSCB  SFT_T(KC_RCBR)
-#define HYPER_L  C_S_T(KC_LBRC)
-#define HYPER_R  C_S_T(KC_RBRC)
-#define LSA_TAB  LSA_T(KC_TAB)
-#define LSA_QT   LSA_T(KC_QUOT)
+#define HYPER_L  C_S_T(KC_RBRC)
+#define HYPER_R  C_S_T(KC_LBRC)
+#define LSA_TAB  ALT_T(KC_TAB)
+#define LSA_QT   ALT_T(KC_QUOT)
 #define CTL_ESC  LCTL_T(KC_ESC)
 #define CTL_ENT  RCTL_T(KC_ENT)
 #define NAV_SCLN LT(NAV_LAYER, KC_SCLN)
@@ -69,6 +69,9 @@ enum user_keycodes {
 #define NAV_SPC  LT(NAV_LAYER, KC_SPC)
 #define CNR_SPC  LT(CORNER_LAYER, KC_SPC)
 #define SFT_SPC  SFT_T(KC_SPC)
+#define RSE_UNDS LT(RAISE_LAYER, KC_UNDS)
+#define CNR_LBRC LT(CORNER_LAYER, KC_LBRC)
+#define CNR_RBRC LT(CORNER_LAYER, KC_RBRC)
 
 // Stitching keys
 #define CAPITAL OSM(MOD_LSFT)
@@ -92,18 +95,18 @@ enum user_keycodes {
 #define __________________NUMS_R___________________ KC_6,    KC_7,    KC_8,    KC_9,    KC_0
 
 #define _________________NUMUP_L___________________ KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
-#define _________________NUMUP_R___________________ KC_CIRC, KC_AMPR, KC_ASTR, KC_LCBR, KC_RCBR
+#define _________________NUMUP_R___________________ KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_EQL
 
-#define _________________TROUGH_L__________________ _______, KC_LCBR, KC_RCBR, KC_LBRC, _______
-#define _________________TROUGH_R__________________ _______, KC_RBRC, KC_COMM, KC_DOT,  KC_SLSH
+#define _________________TROUGH_L__________________ KC_PLUS, KC_MINS, KC_BSLS, KC_GRV,  KC_PIPE
+#define _________________TROUGH_R__________________ KC_PIPE, KC_TILD, KC_COMM, KC_DOT,  KC_SLSH
 
 #define __________________NAV_L1___________________ KC_PLUS, KC_UNDS, KC_PGUP, _______, _______
 #define __________________NAV_L2___________________ _______, KC_HOME, KC_PGDN, KC_END,  _______
 #define __________________NAV_L3___________________ _______, _______, _______, _______, _______
 
-#define __________________NAV_R1___________________ M_UP,    KC_HOME, KC_UP,   KC_END,  KC_EQL
-#define __________________NAV_R2___________________ M_DOWN,  KC_LEFT, KC_DOWN, KC_RGHT, KC_PGUP
-#define __________________NAV_R3___________________ _______, M_LEFT,  _______, M_RGHT,  KC_PGDN
+#define __________________NAV_R1___________________ _______, KC_HOME, KC_END,  _______, _______
+#define __________________NAV_R2___________________ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______
+#define __________________NAV_R3___________________ _______, KC_PGDN, KC_PGUP, _______, _______
 
 #define _________________CORNER_R1_________________ _______, KC_DEL,  KC_DEL,  _______, _______
 #define _________________CORNER_R2_________________ _______, KC_BSPC, KC_BSPC, _______, _______
