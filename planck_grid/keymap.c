@@ -30,16 +30,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *    Tap for ( -- │  ⇧  │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  ⇧  │ -- Tap for )
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *    Tap for [ -- │ CNR │ ⌃⇧  │  ⌥  │  ⌘  │  ↓  │SfSpc│NAVSp│  ↑  │  ⌘  │  ⌥  │ ⌃⇧  │ CNR │ -- Tap for ]
+   *    Tap for [ -- │ CNR │ ⌃⇧  │  ⌥  │  ⌘  │LOWER│SfSpc│NAVSp│RAISE│  ⌘  │  ⌥  │ ⌃⇧  │ CNR │ -- Tap for ]
    *                 └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
-   *                         /                       Tap for "_" /                 /
+   *                         /                       Tap for "-" /                 /
    *    Tap for ] [ --------'-----------------------------------------------------'
    */
   [QWERTY_LAYER] = LAYOUT_planck_grid_wrapper(
-    LSA_TAB, _________________QWERTY_L1_________________,   _________________QWERTY_R1_________________,   LSA_QT,
-    CTL_ESC, _________________QWERTY_L2_________________,   _________________QWERTY_R2_________________,   CTL_ENT,
-    KC_LSPO, _________________QWERTY_L3_________________,   _________________QWERTY_R3_________________,   KC_RSPC,
-    CNR_LBRC, HYPER_L, KC_LALT, KC_LGUI, LOWER, SFT_SPC, NAV_SPC, TD(RSE_UNDS), KC_RGUI, KC_RALT, HYPER_R, CNR_RBRC
+    LSA_TAB, _________________QWERTY_L1_________________, _________________QWERTY_R1_________________,   LSA_QT,
+    CTL_ESC, _________________QWERTY_L2_________________, _________________QWERTY_R2_________________,   CTL_ENT,
+    KC_LSPO, _________________QWERTY_L3_________________, _________________QWERTY_R3_________________,   KC_RSPC,
+    CNR_LBRC, HYPER_L, KC_LALT, KC_LGUI, LOWER, SFT_SPC,  NAV_SPC, RSE_MINS, KC_RGUI, KC_RALT, HYPER_R, CNR_RBRC
   ),
 
   /* Stitching layer (camel)
@@ -279,55 +279,4 @@ void keyboard_post_init_user(void) {
     rgblight_mode_noeeprom(RGBLIGHT_MODE_STATIC_LIGHT);
 }
 #endif
-
-// Tapdance definitions
-td_state_t cur_dance(qk_tap_dance_state_t *state) {
-    if (state->count == 1) {
-        if (state->interrupted || !state->pressed) return TD_SINGLE_TAP;
-        else return TD_SINGLE_HOLD;
-    }
-
-    if (state->count == 2) return TD_DOUBLE_SINGLE_TAP;
-    else return TD_UNKNOWN; // Any number higher than the maximum state value you return above
-}
-
-// Handle the possible states for each tapdance keycode
-void rseunds_finished(qk_tap_dance_state_t *state, void *user_data) {
-    td_state = cur_dance(state);
-    switch (td_state) {
-        case TD_SINGLE_TAP:
-            register_code16(KC_UNDS);
-            break;
-        case TD_SINGLE_HOLD:
-            layer_on(RAISE_LAYER);
-            break;
-        case TD_DOUBLE_SINGLE_TAP: // Allow nesting of 2 underscores `__` within tapping term
-            tap_code16(KC_UNDS);
-            register_code16(KC_UNDS);
-            break;
-        default:
-            ;
-    }
-}
-
-void rseunds_reset(qk_tap_dance_state_t *state, void *user_data) {
-    switch (td_state) {
-        case TD_SINGLE_TAP:
-            unregister_code16(KC_UNDS);
-            break;
-        case TD_SINGLE_HOLD:
-            layer_off(RAISE_LAYER);
-            break;
-        case TD_DOUBLE_SINGLE_TAP:
-            unregister_code16(KC_UNDS);
-            break;
-        default:
-            ;
-    }
-}
-
-// Define `ACTION_TAP_DANCE_FN_ADVANCED()` for each tapdance keycode, passing in `finished` and `reset` functions
-qk_tap_dance_action_t tap_dance_actions[] = {
-    [RSE_UNDS] = ACTION_TAP_DANCE_FN_ADVANCED(NULL, rseunds_finished, rseunds_reset)
-};
 

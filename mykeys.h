@@ -55,6 +55,7 @@ enum user_keycodes {
 #define M_RGHT G(KC_RGHT)
 
 // Tapdance keys
+#define RSE_MINS LT(RAISE_LAYER, KC_MINS)
 #define KC_LSBR  SFT_T(KC_LBRC)
 #define KC_RSBR  SFT_T(KC_RBRC)
 #define KC_LSCB  SFT_T(KC_LCBR)
@@ -73,31 +74,6 @@ enum user_keycodes {
 #define SFT_SPC  SFT_T(KC_SPC)
 #define CNR_LBRC LT(CORNER_LAYER, KC_LBRC)
 #define CNR_RBRC LT(CORNER_LAYER, KC_RBRC)
-
-enum td_keycodes {
-    RSE_UNDS // `RAISE` when held, `_` when tapped.
-};
-
-// Define a type containing as many tapdance states as you need
-typedef enum {
-    TD_NONE,
-    TD_UNKNOWN,
-    TD_SINGLE_TAP,
-    TD_SINGLE_HOLD,
-    TD_DOUBLE_SINGLE_TAP
-} td_state_t;
-
-// Create a global instance of the tapdance state type
-static td_state_t td_state;
-
-// Declare your tapdance functions:
-
-// Function to determine the current tapdance state
-td_state_t cur_dance(qk_tap_dance_state_t *state);
-
-// `finished` and `reset` functions for each tapdance keycode
-void rseunds_finished(qk_tap_dance_state_t *state, void *user_data);
-void rseunds_reset(qk_tap_dance_state_t *state, void *user_data);
 
 // Stitching keys
 #define CAPITAL OSM(MOD_LSFT)
