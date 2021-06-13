@@ -8,13 +8,7 @@
 
 enum user_layers {
   QWERTY_LAYER,
-  CAMEL_LAYER,
-  KEBAB_LAYER,
-  SNAKE_LAYER,
-  PATH_LAYER,
-  WPATH_LAYER,
-  LOWER_LAYER,
-  RAISE_LAYER,
+  NUM_LAYER,
   NAV_LAYER,
   CORNER_LAYER,
   ADJUST_LAYER
@@ -44,6 +38,8 @@ enum user_keycodes {
 #define CRNR_R LT(CORNER_LAYER, KC_RBRC)
 #define CORNER MO(CORNER_LAYER)
 #define NAV    MO(NAV_LAYER)
+#define NAV_SPC  LT(NAV_LAYER, KC_SPC)
+#define NUM_SPC  LT(NUM_LAYER, KC_SPC)
 #define CAMEL  DF(CAMEL_LAYER)
 #define SNAKE  DF(SNAKE_LAYER)
 #define KEBAB  DF(KEBAB_LAYER)
@@ -62,14 +58,13 @@ enum user_keycodes {
 #define KC_RSCB  SFT_T(KC_RCBR)
 #define HYPER_L  C_S_T(KC_RBRC)
 #define HYPER_R  C_S_T(KC_LBRC)
-#define LSA_TAB  ALT_T(KC_TAB)
-#define LSA_QT   ALT_T(KC_QUOT)
+#define A_TAB    ALT_T(KC_TAB)
+#define A_QT     ALT_T(KC_QUOT)
 #define CTL_ESC  LCTL_T(KC_ESC)
 #define CTL_QUOT LCTL_T(KC_QUOT)
 #define CTL_ENT  RCTL_T(KC_ENT)
 #define NAV_SCLN LT(NAV_LAYER, KC_SCLN)
 #define NAV_BSP  LT(NAV_LAYER, KC_BSPC)
-#define NAV_SPC  LT(NAV_LAYER, KC_SPC)
 #define CNR_GRV  LT(CORNER_LAYER, KC_GRV)
 #define SFT_SPC  SFT_T(KC_SPC)
 #define CNR_LBRC LT(CORNER_LAYER, KC_LBRC)
@@ -110,11 +105,11 @@ enum user_keycodes {
 #define __________________NAV_R2___________________ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______
 #define __________________NAV_R3___________________ _______, KC_PGDN, KC_PGUP, _______, _______
 
-#define _________________CORNER_R1_________________ _______, KC_DEL,  KC_DEL,  _______, _______
-#define _________________CORNER_R2_________________ _______, KC_BSPC, KC_BSPC, _______, _______
-#define _________________CORNER_R3_________________ _______, KC_TAB,  KC_TAB,  _______, _______
+#define _________________CORNER_R1_________________ _______, KC_DEL,  KC_DEL,  KC_MAC_A, KC_MAC_S
+#define _________________CORNER_R2_________________ _______, KC_BSPC, KC_BSPC, KC_MAC_D, KC_MAC_F
+#define _________________CORNER_R3_________________ _______, KC_TAB,  KC_TAB,  KC_MAC_G, KC_MAC_H
 
-#define _______________STITCH_SWITCH_______________ _______, CAMEL,   SNAKE,   KEBAB,   _______
+#define _______________STITCH_SWITCH_______________ _______, _______, _______, _______, _______
 
 #define __________VOLUME_________ KC_MUTE, KC_VOLD, KC_VOLU
 #define __________MEDIA__________ KC_MPRV, KC_MPLY, KC_MNXT
