@@ -11,6 +11,8 @@ enum user_layers {
   NUM_LAYER,
   NAV_LAYER,
   CORNER_LAYER,
+  LOWER_LAYER,
+  RAISE_LAYER,
   ADJUST_LAYER
 };
 
@@ -60,6 +62,8 @@ enum user_keycodes {
 #define HYPER_R  C_S_T(KC_LBRC)
 #define A_TAB    ALT_T(KC_TAB)
 #define A_QT     ALT_T(KC_QUOT)
+#define A_LBRC   ALT_T(KC_LBRC)
+#define A_RBRC   ALT_T(KC_RBRC)
 #define CTL_ESC  LCTL_T(KC_ESC)
 #define CTL_QUOT LCTL_T(KC_QUOT)
 #define CTL_ENT  RCTL_T(KC_ENT)
