@@ -22,7 +22,7 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   /* Base layer (Qwerty)
    *                 ┌─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┬─────┐
-   *   Tap for ⇥  -- │  ⇥  │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │  '  │
+   *   Tap for ⇥  -- │ ⌘⇧  │  Q  │  W  │  E  │  R  │  T  │  Y  │  U  │  I  │  O  │  P  │ ⌘⇧  │ -- Tap for '
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *  Tap for Esc -- │  ⌃  │  A  │  S  │  D  │  F  │  G  │  H  │  J  │  K  │  L  │  ;  │  ⌃  │ -- Tap for Enter
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
@@ -32,10 +32,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
    */
   [QWERTY_LAYER] = LAYOUT_planck_grid_wrapper(
-    KC_TAB,  _________________QWERTY_L1_________________, _________________QWERTY_R1_________________,  KC_QUOT,
-    CTL_ESC, _________________QWERTY_L2_________________, _________________QWERTY_R2_________________,  CTL_ENT,
-    KC_LAPO, _________________QWERTY_L3_________________, _________________QWERTY_R3_________________,  KC_RAPC,
-    CORNER,  KC_APP,  KC_INS,  XXXXXXX, KC_LGUI, SFT_SPC, NUM_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT
+    TAB_CMDS, _________________QWERTY_L1_________________, _________________QWERTY_R1_________________, QTE_CMDS,
+    CTL_ESC,  _________________QWERTY_L2_________________, _________________QWERTY_R2_________________, CTL_ENT,
+    KC_LAPO,  _________________QWERTY_L3_________________, _________________QWERTY_R3_________________, KC_RAPC,
+    CORNER,   KC_APP,  KC_INS,  XXXXXXX, KC_LGUI, SFT_SPC, NUM_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT
   ),
 
   /* Numeric layer
