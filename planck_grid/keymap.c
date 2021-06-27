@@ -28,14 +28,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
    *    Tap for ( -- │  ⌥  │  Z  │  X  │  C  │  V  │  B  │  N  │  M  │  ,  │  .  │  /  │  ⌥  │ -- Tap for )
    *                 ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
-   *                 │ CNR │Menu │ Ins │     │  ⌘  │ ⇧/␣ │NUM/␣│ RSE │  ←  │  ↓  │  ↑  │  →  │
+   *                 │ CNR │Menu │^INS │⇧INS │  ⌘  │ ⇧/␣ │NUM/␣│ RSE │  ←  │  ↓  │  ↑  │  →  │
    *                 └─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┴─────┘
    */
   [QWERTY_LAYER] = LAYOUT_planck_grid_wrapper(
     TAB_CMDS, _________________QWERTY_L1_________________, _________________QWERTY_R1_________________, QTE_CMDS,
     CTL_ESC,  _________________QWERTY_L2_________________, _________________QWERTY_R2_________________, CTL_ENT,
     KC_LAPO,  _________________QWERTY_L3_________________, _________________QWERTY_R3_________________, KC_RAPC,
-    CORNER,   KC_APP,  KC_INS,  XXXXXXX, KC_LGUI, SFT_SPC, NUM_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT
+    CORNER, KC_APP, C(KC_INS), S(KC_INS), KC_LGUI, SFT_SPC, NUM_SPC,  RAISE,   KC_LEFT, KC_DOWN, KC_UP,  KC_RGHT
   ),
 
   /* Numeric layer
