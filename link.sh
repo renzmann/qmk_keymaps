@@ -1,7 +1,19 @@
 #! /bin/bash
-ln -nfs ~/repos/qmk_keymaps/planck_grid/keymap.c ~/repos/qmk_firmware/keyboards/planck/keymaps/renzmann/keymap.c
-ln -nfs ~/repos/qmk_keymaps/planck_grid/rules.mk ~/repos/qmk_firmware/keyboards/planck/keymaps/renzmann/rules.mk
-ln -nfs ~/repos/qmk_keymaps/planck_grid/mykeys.h ~/repos/qmk_firmware/keyboards/planck/keymaps/renzmann/mykeys.h
-ln -nfs ~/repos/qmk_keymaps/config.h ~/repos/qmk_firmware/keyboards/planck/keymaps/renzmann/config.h
-ln -nfs ~/repos/qmk_keymaps/mymacro.h ~/repos/qmk_firmware/keyboards/planck/keymaps/renzmann/mymacro.h
 
+source .env
+
+if [[ ! -v KEYMAP ]]; then
+    echo "KEYMAP not set - exiting"
+    exit 1
+fi
+
+if [[ ! -f ./keymap.c ]]; then
+    echo "keymap.c not found. Call ../link.sh from one of the keymap directories"
+    exit 2
+fi
+
+ln -nfs $(pwd)/./keymap.c $KEYMAP/keymap.c
+ln -nfs $(pwd)/../rules.mk $KEYMAP/rules.mk
+ln -nfs $(pwd)/../mykeys.h $KEYMAP/mykeys.h
+ln -nfs $(pwd)/../config.h $KEYMAP/config.h
+ln -nfs $(pwd)/../mymacro.h $KEYMAP/mymacro.h

@@ -13,7 +13,8 @@ enum user_layers {
   CORNER_LAYER,
   LOWER_LAYER,
   RAISE_LAYER,
-  ADJUST_LAYER
+  ADJUST_LAYER,
+  FN_LAYER
 };
 
 // "MY" is usually pretty safe to avoid conflicts
@@ -21,14 +22,14 @@ enum user_keycodes {
   MY_EQL = SAFE_RANGE,
   MY_PLUS,
   MY_MINS,
-  KC_MAC_A,
-  KC_MAC_S,
-  KC_MAC_D,
-  KC_MAC_F,
-  KC_MAC_G,
-  KC_MAC_H,
-  KC_MAC_J,
-  KC_MAC_K,
+  KC_MACA,
+  KC_MACS,
+  KC_MACD,
+  KC_MACF,
+  KC_MACG,
+  KC_MACH,
+  KC_MACJ,
+  KC_MACK,
   NEW_SAFE_RANGE
 };
 
@@ -39,6 +40,7 @@ enum user_keycodes {
 #define CRNR_L LT(CORNER_LAYER, KC_LBRC)
 #define CRNR_R LT(CORNER_LAYER, KC_RBRC)
 #define CORNER MO(CORNER_LAYER)
+#define FN     MO(FN_LAYER)
 #define NAV    MO(NAV_LAYER)
 #define NAV_SPC  LT(NAV_LAYER, KC_SPC)
 #define NUM_SPC  LT(NUM_LAYER, KC_SPC)
