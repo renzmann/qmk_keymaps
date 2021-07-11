@@ -113,9 +113,9 @@ enum user_keycodes {
 #define __________________NAV_R2___________________ KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, _______
 #define __________________NAV_R3___________________ _______, KC_PGDN, KC_PGUP, _______, _______
 
-#define _________________CORNER_R1_________________ _______, KC_DEL,  KC_DEL,  KC_MAC_A, KC_MAC_S
-#define _________________CORNER_R2_________________ _______, KC_BSPC, KC_BSPC, KC_MAC_D, KC_MAC_F
-#define _________________CORNER_R3_________________ _______, KC_TAB,  KC_TAB,  KC_MAC_G, KC_MAC_H
+#define _________________CORNER_R1_________________ _______, KC_DEL,  KC_DEL,  KC_MACA, KC_MACS
+#define _________________CORNER_R2_________________ _______, KC_BSPC, KC_BSPC, KC_MACD, KC_MACF
+#define _________________CORNER_R3_________________ _______, KC_TAB,  KC_TAB,  KC_MACG, KC_MACH
 
 #define _______________STITCH_SWITCH_______________ _______, _______, _______, _______, _______
 
