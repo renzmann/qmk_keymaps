@@ -9,8 +9,13 @@ use the Rev6 configuration, but on an EZ board. That means there's an extra key
 hanging off the edge on the bottom row for all the layers to account for the spacebar
 taking up two physical slots, but only one element in the layer array.
 
+To use the `make` automation, this repo assumes that you've already cloned
+`qmk_firmware` from the link above, and that a `.venv` python virtual environment
+sits at the top level of that repository that's capable of running the `qmk flash`
+command. Assuming that's all done, you can use e.g. `make grid` to flash the
+`planck_grid` keymap to your keyboard.
+
 ## TODO's
 
-1. Build a Makefile for automating linking/compiling/flashing
 1. EZ is just a special case of MIT, so we should somehow make those layers common
    accross those files.
