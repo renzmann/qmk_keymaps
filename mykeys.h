@@ -102,7 +102,7 @@ enum user_keycodes {
 #define _________________NUMUP_L___________________ KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC
 #define _________________NUMUP_R___________________ KC_CIRC, KC_AMPR, KC_ASTR, KC_UNDS, KC_EQL
 
-#define _________________TROUGH_L__________________ KC_PLUS, KC_MINS, KC_BSLS, KC_GRV,  KC_PIPE
+#define _________________TROUGH_L__________________ KC_PLUS, KC_MINS, KC_BSLS, KC_GRV,  _______
 #define _________________TROUGH_R__________________ KC_PIPE, KC_TILD, KC_COMM, KC_DOT,  KC_SLSH
 
 #define __________________NAV_L1___________________ KC_PLUS, KC_UNDS, KC_PGUP, _______, _______
